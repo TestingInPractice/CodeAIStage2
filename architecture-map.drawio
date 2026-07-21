@@ -1,0 +1,504 @@
+<mxfile host="app.diagrams.net" modified="2026-07-21T20:00:00.000Z" agent="CodeAI" version="21.0.0">
+  <diagram id="codeai-architecture" name="CodeAI Architecture / Архитектура CodeAI">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE -->
+        <mxCell id="title" value="CODEAI — Architecture Map / Архитектурная карта CodeAI" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="450" y="15" width="550" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- LEGEND -->
+        <mxCell id="legend_green" value="✅ Existing / Существующий" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_orange" value="⚠️ Problem / Проблема" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="20" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_blue" value="🆕 New Feature / Новая фича" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="20" width="180" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== MAIN FLOW ==================== -->
+
+        <!-- 1. Prompt -->
+        <mxCell id="prompt" value="📝 Prompt / Промпт" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="70" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="prompt_desc" value="User input / Ввод пользователя. Natural language task description." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="120" width="220" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Prompt → Spec Engine -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="prompt" target="spec_engine" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 2. Spec Engine -->
+        <mxCell id="spec_engine" value="📋 Spec Engine / Движок спецификаций" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="160" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="spec_desc" value="Parses prompt into structured spec. Parses prompt into structured spec. Generates spec.json." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="210" width="220" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Spec Engine → Workflow Engine -->
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="spec_engine" target="workflow_engine" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 3. Workflow Engine -->
+        <mxCell id="workflow_engine" value="⚙️ Workflow Engine / Движок workflows" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="260" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="workflow_desc" value="Shell orchestrator. Calls agents sequentially via `opencode run --agent`. Manages task lifecycle." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="310" width="220" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Workflow Engine → OODA Runtime -->
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="workflow_engine" target="ooda_runtime" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 4. OODA Runtime -->
+        <mxCell id="ooda_runtime" value="🔄 OODA Runtime / Среда выполнения OODA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="370" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ooda_desc" value="Manages state, resume, interrupt. Chains Observe→Orient→Decide→Act. Python pipeline." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="420" width="240" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows: OODA → 3 agents -->
+        <mxCell id="e4a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="ooda_runtime" target="observe" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="395" />
+              <mxPoint x="430" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="ooda_runtime" target="decide" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="395" />
+              <mxPoint x="650" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4c" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="ooda_runtime" target="act" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="395" />
+              <mxPoint x="850" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5. Four OODA Agents -->
+        <mxCell id="observe" value="👁️ @observe / Наблюдение" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="480" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="observe_desc" value="Gathers codebase facts. Writes observe-summary.md." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="300" y="530" width="180" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="orient" value="🧭 @orient / Ориентация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="480" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="orient_desc" value="Analyzes context. Writes architecture.md." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="500" y="530" width="180" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="decide" value="🧠 @decide / Решение" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="480" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="decide_desc" value="Creates plan.md. Chooses files, steps, risks." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="700" y="530" width="180" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="act" value="⚡ @act / Действие" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="480" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act_desc" value="Writes code. Runs tests. Writes dev-summary.md." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="900" y="530" width="180" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows: agents → Memory/Knowledge/Tools -->
+        <mxCell id="e5a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="observe" target="memory" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="565" />
+              <mxPoint x="300" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="decide" target="knowledge" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="565" />
+              <mxPoint x="650" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5c" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="act" target="tools" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="565" />
+              <mxPoint x="950" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 6. Memory / Knowledge / Tools -->
+        <mxCell id="memory" value="💾 Memory / Память" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="600" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="memory_desc" value="Rolling context window. Short-term + long-term memory layers." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="220" y="650" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="knowledge" value="📚 Knowledge / Знания" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="600" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="knowledge_desc" value="Project files, docs, examples. AGENTS.md, README." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="570" y="650" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tools" value="🔧 Tools / Инструменты" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="600" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tools_desc" value="grep, glob, cat, bash. File operations, search, execution." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="880" y="650" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows: 3 → Judge Engine -->
+        <mxCell id="e6a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="memory" target="judge_engine" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="700" />
+              <mxPoint x="530" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="knowledge" target="judge_engine" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="700" />
+              <mxPoint x="650" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6c" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="tools" target="judge_engine" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="700" />
+              <mxPoint x="770" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 7. Judge Engine -->
+        <mxCell id="judge_engine" value="⚖️ Judge Engine / Судья" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="720" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="judge_desc" value="Evaluates quality. Checks plan compliance. Scores output." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="770" width="220" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Judge Engine → Memory Update -->
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="judge_engine" target="memory_update" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 8. Memory Update -->
+        <mxCell id="memory_update" value="🔄 Memory Update / Обновление памяти" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="810" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="memory_update_desc" value="Persists results. Updates memory layers. Stores artifacts." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="860" width="220" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Memory Update → Next Iteration -->
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="memory_update" target="next_iteration" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 9. Next Iteration -->
+        <mxCell id="next_iteration" value="🔁 Next Iteration / Следующая итерация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="900" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="next_iteration_desc" value="Loops back to Prompt for next task. Continuous workflow." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="950" width="220" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== NEW FEATURES (BLUE) ==================== -->
+
+        <!-- Pipelines #51 -->
+        <mxCell id="pipelines" value="🆕 Pipelines #51&#xa;Строгие цепочки" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="260" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="pipelines_desc" value="Strict chains + minimal context passing between steps." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="315" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ep1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="pipelines" target="workflow_engine" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Quality Gates #52 -->
+        <mxCell id="quality_gates" value="🆕 Quality Gates #52&#xa;Контроль качества" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="720" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="quality_gates_desc" value="Reviewer + Tester agents. Revision loops before merge." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="775" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="eq1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="quality_gates" target="judge_engine" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Security Agent #53 -->
+        <mxCell id="security_agent" value="🆕 Security Agent #53&#xa;Безопасность" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="480" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="security_agent_desc" value="Audit + Triggers. Mandatory for auth-related changes." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="535" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="es1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="security_agent" target="act" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ContextScout #54 -->
+        <mxCell id="context_scout" value="🆕 ContextScout #54&#xa;Умный поиск" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="370" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="context_scout_desc" value="Smart pattern discovery. Finds relevant code automatically." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="425" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ec1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="context_scout" target="ooda_runtime" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Context System #55 -->
+        <mxCell id="context_system" value="🆕 Context System #55&#xa;MVI - Минимум" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="200" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="context_system_desc" value="Minimal Viable Information. Right context, right time." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="255" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ecs1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="context_system" target="context_scout" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Approval Gates #56 -->
+        <mxCell id="approval_gates" value="🆕 Approval Gates #56&#xa;Одобрение человека" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="80" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="approval_gates_desc" value="Human-in-the-loop before critical operations." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="135" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="eag1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="approval_gates" target="context_system" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Team Patterns #57 -->
+        <mxCell id="team_patterns" value="🆕 Team Patterns #57&#xa;Паттерны команды" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="480" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="team_patterns_desc" value="Shared context in repo. Team collaboration patterns." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="535" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="etp1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="team_patterns" target="context_scout" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ExternalScout #58 -->
+        <mxCell id="external_scout" value="🆕 ExternalScout #58&#xa;Внешняя документация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="600" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="external_scout_desc" value="Live documentation fetching. Pulls from external sources." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="655" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ees1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="external_scout" target="context_scout" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Agent-as-Tool #59 (NEW) -->
+        <mxCell id="agent_as_tool" value="🆕 Agent-as-Tool #59&#xa;Агент как инструмент" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="720" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="agent_as_tool_desc" value="LLM calls agents as tools. Hierarchical orchestration." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="775" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="eat1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" source="agent_as_tool" target="ooda_runtime" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== PROBLEMS (ORANGE) ==================== -->
+
+        <!-- Token Overlap #47 -->
+        <mxCell id="token_overlap" value="⚠️ Token Overlap #47&#xa;Проблема токенов" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="830" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="token_overlap_desc" value="No semantic understanding. Token-count based only." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="50" y="885" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- fcntl #50 -->
+        <mxCell id="fcntl" value="⚠️ fcntl #50&#xa;Только Unix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="940" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="fcntl_desc" value="Unix-only module. Windows broken. Needs cross-platform fix." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="50" y="995" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Dead Code #49 -->
+        <mxCell id="dead_code" value="⚠️ Dead Code #49&#xa;Мёртвый код" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1050" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="dead_code_desc" value="RetryPolicy, RollbackEntry, Phase. Unused classes." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1105" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== COMPLETED (GREEN CHECK) ==================== -->
+
+        <!-- Agents #45 -->
+        <mxCell id="agents_done" value="✅ Agents #45&#xa;Агенты в репозитории" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="80" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="agents_done_desc" value="agents/ directory. 4 OODA agent definitions." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="135" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- pyproject.toml #46 -->
+        <mxCell id="pyproject_done" value="✅ pyproject.toml #46&#xa;Конфигурация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="170" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="pyproject_done_desc" value="Full config. Ruff + Pytest. Build system." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="225" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SKIPPED (GRAY) ==================== -->
+
+        <mxCell id="skipped" value="⏭️ Skipped / Пропущено:&#xa;#43, #44, #47" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=12;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="280" width="170" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== WORKFLOW DETAIL ==================== -->
+
+        <!-- Workflow Detail Box -->
+        <mxCell id="workflow_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#cccccc;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1160" width="1470" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="workflow_title" value="📋 Workflow Detail / Детали workflow" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1170" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Step 1 -->
+        <mxCell id="wf_step1" value="1. Prompt&#xa;/ Промпт" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step1_desc" value="User describes task in natural language. Can be file edit, bug fix, or new feature." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wf_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf_step1" target="wf_step2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 2 -->
+        <mxCell id="wf_step2" value="2. Spec&#xa;/ Спецификация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step2_desc" value="LLM parses prompt into spec.json. Extracts type, priority, files, acceptance criteria." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wf_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf_step2" target="wf_step3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 3 -->
+        <mxCell id="wf_step3" value="3. Observe&#xa;/ Наблюдение" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step3_desc" value="Scans codebase. Collects facts. Writes observe-summary.md. No changes made." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="370" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wf_e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf_step3" target="wf_step4" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 4 -->
+        <mxCell id="wf_step4" value="4. Orient&#xa;/ Ориентация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step4_desc" value="Analyzes context. Identifies risks. Writes architecture.md. Recommends approach." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wf_e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf_step4" target="wf_step5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 5 -->
+        <mxCell id="wf_step5" value="5. Decide&#xa;/ Решение" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step5_desc" value="Creates plan.md. Lists files, steps, risks. Approval gates optional." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="670" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wf_e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf_step5" target="wf_step6" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 6 -->
+        <mxCell id="wf_step6" value="6. Act&#xa;/ Действие" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step6_desc" value="Writes code per plan. Runs tests. Writes dev-summary.md. Files changed." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="820" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wf_e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf_step6" target="wf_step7" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 7 -->
+        <mxCell id="wf_step7" value="7. Judge&#xa;/ Судья" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="970" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step7_desc" value="Evaluates quality. Checks plan compliance. Scores output. Optional." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="970" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wf_e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf_step7" target="wf_step8" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 8 -->
+        <mxCell id="wf_step8" value="8. Memory&#xa;/ Память" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step8_desc" value="Persists results. Updates memory layers. Stores artifacts." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wf_e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf_step8" target="wf_step9" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 9 -->
+        <mxCell id="wf_step9" value="9. Loop&#xa;/ Цикл" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="1210" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wf_step9_desc" value="Returns to step 1 for next task. Continuous workflow loop." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="1255" width="120" height="40" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,444 @@
+<mxfile host="app.diagrams.net" modified="2026-07-21T21:00:00.000Z" agent="CodeAI" version="21.0.0">
+  <diagram id="multi-agent-implementation" name="Multi-Agent System Implementation / Реализация мультиагентной системы">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE -->
+        <mxCell id="title" value="MULTI-AGENT SYSTEM — Implementation Architecture / Архитектура реализации" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="400" y="15" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- LEGEND -->
+        <mxCell id="legend_ooda" value="🔄 OODA Level / Уровень ООДА" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_agent" value="🤖 Agent / Агент" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_file" value="📄 File / Файл" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="20" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_tool" value="🔧 Tool / Инструмент" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="20" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== USER INPUT ==================== -->
+        <mxCell id="user" value="👤 User / Пользователь" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="530" y="70" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="user_desc" value="Provides task.md with requirements" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="120" width="200" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: User → Orchestrator -->
+        <mxCell id="e_user" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#666666;" edge="1" source="user" target="orchestrator" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ORCHESTRATOR (MACRO OODA) ==================== -->
+        <mxCell id="orchestrator_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=3;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="160" width="460" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="orchestrator_title" value="🔄 ORCHESTRATOR — MACRO OODA / Оркестратор — Макро ООДА" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="420" y="170" width="420" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Orchestrator Agent -->
+        <mxCell id="orchestrator" value="🧠 Orchestrator Agent&#xa;LLM + Python Utils" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="210" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="orchestrator_desc" value=".opencode/agents/orchestrator.md&#xa;Follows 12-step workflow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="530" y="270" width="200" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- OODA Steps inside orchestrator -->
+        <mxCell id="o_observe" value="👁️ OBSERVE&#xa;Read state" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="310" width="90" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="o_orient" value="🧭 ORIENT&#xa;Understand" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="310" width="90" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="o_decide" value="🧠 DECIDE&#xa;Choose agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="310" width="90" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="o_act" value="⚡ ACT&#xa;Call agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="310" width="90" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- OODA arrows inside orchestrator -->
+        <mxCell id="eo1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#9673a6;" edge="1" source="o_observe" target="o_orient" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eo2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#9673a6;" edge="1" source="o_orient" target="o_decide" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eo3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#9673a6;" edge="1" source="o_decide" target="o_act" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Feedback loop -->
+        <mxCell id="eo4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#9673a6;dashed=1;" edge="1" source="o_act" target="o_observe" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="765" y="300" />
+              <mxPoint x="465" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="feedback_label" value="feedback" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=9;fontColor=#9673a6;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="590" y="285" width="60" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Python Utils -->
+        <mxCell id="python_utils" value="🐍 Python Utils" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="370" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="python_utils_desc" value="state.py, validator.py&#xa;context.py, files.py" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="410" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Task Tool -->
+        <mxCell id="task_tool" value="🔧 OpenCode Task Tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="370" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="task_tool_desc" value="Calls sub-agents&#xa;Passes context" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="620" y="410" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows inside orchestrator box -->
+        <mxCell id="eo5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="orchestrator" target="python_utils" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eo6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="orchestrator" target="task_tool" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SUB-AGENTS (MICRO OODA) ==================== -->
+
+        <!-- Analyst Agent -->
+        <mxCell id="analyst_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="500" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="analyst_title" value="🔍 ANALYST / Аналитик" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="510" width="240" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="analyst_agent" value="🤖 AnalystAgent&#xa;Sub-agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="545" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="analyst_ooda" value="MICRO OODA:&#xa;OBSERVE → ORIENT → DECIDE → ACT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#9673a6;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="595" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="analyst_input" value="📥 Input: task.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="625" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="analyst_output" value="📤 Output: analysis.md, questions.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="645" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="analyst_prompt" value="📄 .opencode/agents/analyst.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=9;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="70" y="670" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Developer Agent -->
+        <mxCell id="developer_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="380" y="500" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="developer_title" value="💻 DEVELOPER / Разработчик" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="400" y="510" width="240" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="developer_agent" value="🤖 DeveloperAgent&#xa;Sub-agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="545" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="developer_ooda" value="MICRO OODA:&#xa;OBSERVE → ORIENT → DECIDE → ACT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#9673a6;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="400" y="595" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="developer_input" value="📥 Input: analysis.md, mcp_search.md, documentation.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="400" y="625" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="developer_output" value="📤 Output: code, tests, dev-summary.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="400" y="645" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="developer_prompt" value="📄 .opencode/agents/developer.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=9;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="670" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Tester Agent -->
+        <mxCell id="tester_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="710" y="500" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="tester_title" value="🧪 TESTER / Тестировщик" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="730" y="510" width="240" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="tester_agent" value="🤖 TesterAgent&#xa;Sub-agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="545" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tester_ooda" value="MICRO OODA:&#xa;OBSERVE → ORIENT → DECIDE → ACT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=9;fontColor=#9673a6;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="730" y="595" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tester_input" value="📥 Input: analysis.md, documentation.md, code/, tests/" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="730" y="625" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tester_output" value="📤 Output: test-cases.md, defects.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="730" y="645" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tester_prompt" value="📄 .opencode/agents/tester.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=9;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="730" y="670" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: ORCHESTRATOR → SUB-AGENTS ==================== -->
+        <mxCell id="e_to_analyst" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" source="task_tool" target="analyst_box" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="460" />
+              <mxPoint x="190" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_to_developer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" source="task_tool" target="developer_box" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="460" />
+              <mxPoint x="520" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_to_tester" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" source="task_tool" target="tester_box" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="460" />
+              <mxPoint x="850" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== FILE SYSTEM ==================== -->
+        <mxCell id="filesystem_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="760" width="940" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="filesystem_title" value="📁 FILE SYSTEM / Файловая система" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="70" y="770" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Task files -->
+        <mxCell id="task_md" value="📄 tasks/task.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="810" width="130" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Subtask files -->
+        <mxCell id="subtask_analyst" value="📄 subtasks/SUB-001-analyst/&#xa;analysis.md, questions.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="220" y="810" width="180" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="subtask_developer" value="📄 subtasks/SUB-002-developer/&#xa;mcp_search.md, documentation.md,&#xa;plan.md, dev-summary.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="810" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="subtask_tester" value="📄 subtasks/SUB-003-tester/&#xa;test-cases.md, defects.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="810" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- State files -->
+        <mxCell id="state_json" value="⚙️ .workflow/state.json" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="880" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="history_json" value="⚙️ .workflow/history.json" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="880" width="170" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Reports -->
+        <mxCell id="execution_report" value="📊 reports/execution-report.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="880" width="210" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="presentation_pdf" value="📊 reports/presentation.pdf" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="880" width="200" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== WORKFLOW STEPS (12 STEPS) ==================== -->
+        <mxCell id="workflow_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#cccccc;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="980" width="1470" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="workflow_title" value="📋 12-STEP WORKFLOW / 12-шаговый воркфлоу" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="990" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Step 1 -->
+        <mxCell id="wf1" value="1. VALIDATE&#xa;INPUT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf1_desc" value="Parse task.md" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf1" target="wf2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 2 -->
+        <mxCell id="wf2" value="2. ANALYZE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf2_desc" value="Analyst checks" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="180" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf2" target="wf3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 3 -->
+        <mxCell id="wf3" value="3. SPLIT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf3_desc" value="Create subtasks" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf3" target="wf4" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 4 -->
+        <mxCell id="wf4" value="4. MCP&#xa;SEARCH" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf4_desc" value="Find patterns" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf4" target="wf5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 5 -->
+        <mxCell id="wf5" value="5. TEST&#xa;DOCS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf5_desc" value="Tester validates (loop 3x)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="510" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf5" target="wf6" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 6 -->
+        <mxCell id="wf6" value="6. DEVELOP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf6_desc" value="Write code + tests" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf6" target="wf7" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 7 -->
+        <mxCell id="wf7" value="7. CODE&#xa;REVIEW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf7_desc" value="Optional review" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="730" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf7" target="wf8" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 8 -->
+        <mxCell id="wf8" value="8. TEST&#xa;CODE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf8_desc" value="Run tests, find defects" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf8" target="wf9" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 9 -->
+        <mxCell id="wf9" value="9. FIX&#xa;DEFECTS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf9_desc" value="Fix bugs (loop 5x)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf9" target="wf10" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 10 -->
+        <mxCell id="wf10" value="10. DOCUMENT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf10_desc" value="Write docs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf10" target="wf11" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 11 -->
+        <mxCell id="wf11" value="11. DEMO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="1030" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf11_desc" value="Generate reports" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="1070" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wfe11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf11" target="wf12" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 12 -->
+        <mxCell id="wf12" value="12. COMPLETE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1030" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wf12_desc" value="Done!" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=8;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1070" width="100" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONTEXT ISOLATION ==================== -->
+        <mxCell id="context_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="500" width="470" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="context_title" value="🔒 CONTEXT ISOLATION / Изоляция контекста" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="510" width="430" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ctx_analyst" value="Analyst → task.md ONLY" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="550" width="430" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx_developer" value="Developer → analysis.md, mcp_search.md, documentation.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="580" width="430" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx_tester" value="Tester → analysis.md, documentation.md, code/, tests/" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="610" width="430" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx_rule" value="Each agent receives ONLY its specific input files.&#xa;No access to other agents context or full history." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#999999;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="650" width="430" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== OODA SUMMARY BOX ==================== -->
+        <mxCell id="ooda_summary_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="760" width="470" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ooda_summary_title" value="🔄 OODA SUMMARY / Итого по ООДА" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="770" width="430" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ooda_macro" value="MACRO OODA (Orchestrator):&#xa;  OBSERVE → ORIENT → DECIDE → ACT → feedback" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="810" width="430" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ooda_micro" value="MICRO OODA (Each Sub-agent):&#xa;  OBSERVE → ORIENT → DECIDE → ACT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="850" width="430" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ooda_note" value="Orchestrator = decision-making loop (not just a caller)&#xa;Sub-agents = tools that orchestrator uses" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#999999;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="890" width="430" height="35" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
