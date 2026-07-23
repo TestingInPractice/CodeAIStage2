@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        /* ---------------------------------------------------------------
+           Base
+           --------------------------------------------------------------- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                         Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* ---------------------------------------------------------------
+           Card
+           --------------------------------------------------------------- */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 440px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 24px;
+            color: #1a1a2e;
+        }
+
+        /* ---------------------------------------------------------------
+           Form elements
+           --------------------------------------------------------------- */
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4361ee;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+        }
+
+        input.invalid {
+            border-color: #e63946;
+        }
+
+        .field-group {
+            margin-bottom: 18px;
+        }
+
+        .field-group .error-text {
+            color: #e63946;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            min-height: 1rem;
+        }
+
+        /* ---------------------------------------------------------------
+           Button
+           --------------------------------------------------------------- */
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: #4361ee;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+
+        button[type="submit"]:hover { background: #3a56d4; }
+        button[type="submit"]:disabled { background: #a0aec0; cursor: not-allowed; }
+
+        /* ---------------------------------------------------------------
+           Feedback messages
+           --------------------------------------------------------------- */
+        .feedback {
+            margin-top: 16px;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-align: center;
+            display: none;
+        }
+
+        .feedback.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        /* ---------------------------------------------------------------
+           Password strength indicator
+           --------------------------------------------------------------- */
+        .strength-bar {
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 6px;
+            background: #e0e0e0;
+            overflow: hidden;
+        }
+
+        .strength-bar .fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 2px;
+            transition: width 0.3s, background 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Create Account</h1>
+
+        <form id="registrationForm" novalidate>
+            <!-- Name -->
+            <div class="field-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                <div class="error-text" id="nameError"></div>
+            </div>
+
+            <!-- Email -->
+            <div class="field-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                <div class="error-text" id="emailError"></div>
+            </div>
+
+            <!-- Password -->
+            <div class="field-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Min. 8 characters" required>
+                <div class="strength-bar"><div class="fill" id="strengthFill"></div></div>
+                <div class="error-text" id="passwordError"></div>
+            </div>
+
+            <!-- Confirm password -->
+            <div class="field-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+                <div class="error-text" id="confirmPasswordError"></div>
+            </div>
+
+            <button type="submit" id="submitBtn">Register</button>
+        </form>
+
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script>
+        // ---------------------------------------------------------------
+        // DOM helpers
+        // ---------------------------------------------------------------
+        const form          = document.getElementById("registrationForm");
+        const submitBtn     = document.getElementById("submitBtn");
+        const feedbackEl    = document.getElementById("feedback");
+        const strengthFill  = document.getElementById("strengthFill");
+
+        const fields = {
+            name:            { el: document.getElementById("name"),            err: document.getElementById("nameError") },
+            email:           { el: document.getElementById("email"),           err: document.getElementById("emailError") },
+            password:        { el: document.getElementById("password"),        err: document.getElementById("passwordError") },
+            confirmPassword: { el: document.getElementById("confirmPassword"), err: document.getElementById("confirmPasswordError") },
+        };
+
+        // ---------------------------------------------------------------
+        // Validators
+        // ---------------------------------------------------------------
+        const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const MIN_PWD  = 8;
+
+        function validateField(name) {
+            const val = fields[name].el.value.trim();
+            const err = fields[name].err;
+
+            switch (name) {
+                case "name":
+                    if (!val) { err.textContent = "Name is required"; fields[name].el.classList.add("invalid"); return false; }
+                    break;
+                case "email":
+                    if (!val) { err.textContent = "Email is required"; fields[name].el.classList.add("invalid"); return false; }
+                    if (!EMAIL_RE.test(val)) { err.textContent = "Please enter a valid email"; fields[name].el.classList.add("invalid"); return false; }
+                    break;
+                case "password":
+                    if (!val) { err.textContent = "Password is required"; fields[name].el.classList.add("invalid"); return false; }
+                    if (val.length < MIN_PWD) { err.textContent = `Password must be at least ${MIN_PWD} characters`; fields[name].el.classList.add("invalid"); return false; }
+                    break;
+                case "confirmPassword":
+                    if (!val) { err.textContent = "Please confirm your password"; fields[name].el.classList.add("invalid"); return false; }
+                    if (val !== fields.password.el.value) { err.textContent = "Passwords do not match"; fields[name].el.classList.add("invalid"); return false; }
+                    break;
+            }
+
+            err.textContent = "";
+            fields[name].el.classList.remove("invalid");
+            return true;
+        }
+
+        function validateAll() {
+            let ok = true;
+            for (const name of Object.keys(fields)) {
+                if (!validateField(name)) ok = false;
+            }
+            return ok;
+        }
+
+        // ---------------------------------------------------------------
+        // Password strength indicator
+        // ---------------------------------------------------------------
+        function updateStrength() {
+            const pwd = fields.password.el.value;
+            let score = 0;
+            if (pwd.length >= MIN_PWD)          score++;
+            if (pwd.length >= 12)               score++;
+            if (/[A-Z]/.test(pwd))              score++;
+            if (/[0-9]/.test(pwd))              score++;
+            if (/[^A-Za-z0-9]/.test(pwd))       score++;
+
+            const pct   = (score / 5) * 100;
+            const color = score <= 2 ? "#e63946" : score <= 3 ? "#f4a261" : "#2a9d8f";
+            strengthFill.style.width      = pct + "%";
+            strengthFill.style.background = color;
+        }
+
+        // ---------------------------------------------------------------
+        // Inline validation on blur / input
+        // ---------------------------------------------------------------
+        for (const name of Object.keys(fields)) {
+            fields[name].el.addEventListener("blur",  () => validateField(name));
+            fields[name].el.addEventListener("input", () => {
+                validateField(name);
+                if (name === "password") {
+                    updateStrength();
+                    // Re-validate confirm if it already has a value
+                    if (fields.confirmPassword.el.value) validateField("confirmPassword");
+                }
+            });
+        }
+
+        // ---------------------------------------------------------------
+        // Form submission
+        // ---------------------------------------------------------------
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            feedbackEl.className = "feedback";
+            feedbackEl.style.display = "none";
+
+            if (!validateAll()) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Registering\u2026";
+
+            const payload = {
+                name:             fields.name.el.value.trim(),
+                email:            fields.email.el.value.trim().toLowerCase(),
+                password:         fields.password.el.value,
+                confirm_password: fields.confirmPassword.el.value,
+            };
+
+            try {
+                const resp = await fetch("/api/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+
+                const data = await resp.json();
+
+                if (resp.ok) {
+                    feedbackEl.textContent = data.message || "Registration successful!";
+                    feedbackEl.className   = "feedback success";
+                    form.reset();
+                    strengthFill.style.width = "0%";
+                } else {
+                    const msg = data.detail || data.message || "Registration failed. Please try again.";
+                    feedbackEl.textContent = msg;
+                    feedbackEl.className   = "feedback error";
+                }
+            } catch (err) {
+                feedbackEl.textContent = "Network error. Please try again later.";
+                feedbackEl.className   = "feedback error";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Register";
+            }
+        });
+    </script>
+</body>
+</html>

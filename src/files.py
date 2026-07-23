@@ -7,6 +7,7 @@ SUBTASK_DIRS = {
     "analyst": "SUB-001-analyst",
     "developer": "SUB-002-developer",
     "tester": "SUB-003-tester",
+    "security": "SUB-004-security",
 }
 
 

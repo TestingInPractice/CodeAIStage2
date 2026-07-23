@@ -29,6 +29,7 @@
         "test_documentation",
         "develop",
         "code_review",
+        "security_check",
         "test_code",
         "fix_defects",
         "document",
@@ -57,7 +58,8 @@
       "properties": {
         "analyst": { "$ref": "#/definitions/agentState" },
         "developer": { "$ref": "#/definitions/agentState" },
-        "tester": { "$ref": "#/definitions/agentState" }
+        "tester": { "$ref": "#/definitions/agentState" },
+        "security": { "$ref": "#/definitions/agentState" }
       },
       "additionalProperties": false
     },

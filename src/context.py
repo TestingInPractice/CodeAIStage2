@@ -7,6 +7,7 @@ CONTEXT_ISOLATION = {
     "developer": ["analysis.md", "mcp_search.md", "documentation.md"],
     "tester": ["analysis.md", "documentation.md", "code/", "tests/"],
     "reviewer": ["code/", "tests/", "documentation.md"],
+    "security": ["analysis.md", "documentation.md", "code/", "tests/", "dev-summary.md"],
 }
 
 
@@ -76,12 +77,29 @@ def build_reviewer_context(project_root: Path) -> dict[str, Any]:
     }
 
 
+def build_security_context(project_root: Path) -> dict[str, Any]:
+    subtask_dir = project_root / "subtasks" / "SUB-004-security"
+    dev_dir = project_root / "subtasks" / "SUB-002-developer"
+    return {
+        "agent": "security",
+        "input_files": {
+            "analysis.md": read_file_safe(subtask_dir / "analysis.md"),
+            "documentation.md": read_file_safe(subtask_dir / "documentation.md"),
+            "dev-summary.md": read_file_safe(dev_dir / "dev-summary.md"),
+        },
+        "code": read_dir_safe(project_root / "src"),
+        "tests": read_dir_safe(project_root / "tests"),
+        "available_files": list(CONTEXT_ISOLATION["security"]),
+    }
+
+
 def build_context(agent_type: str, project_root: Path) -> dict[str, Any]:
     builders = {
         "analyst": build_analyst_context,
         "developer": build_developer_context,
         "tester": build_tester_context,
         "reviewer": build_reviewer_context,
+        "security": build_security_context,
     }
     builder = builders.get(agent_type)
     if builder is None:

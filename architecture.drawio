@@ -1,0 +1,211 @@
+<mxfile host="app.diagrams.net" modified="2026-07-22T19:30:00.000Z" agent="CodeAI" version="21.0.0">
+  <diagram id="hermes-architecture" name="Hermes Multi-Agent Architecture">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE -->
+        <mxCell id="title" value="HERMES — Multi-Agent System / Мульти-агентная система" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="400" y="15" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- LEGEND -->
+        <mxCell id="legend_orchestrator" value="🎯 Оркестратор" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_research" value="🔍 Исследование" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_planning" value="📐 Планирование" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_impl" value="⚙️ Реализация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_quality" value="✅ Качество" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_docs" value="📝 Документация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="800" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_infra" value="🏗️ Инфраструктура" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="950" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ORCHESTRATOR ==================== -->
+        <mxCell id="orchestrator" value="🎯 ОРКЕСТРАТОР&#xa;Главный координатор&#xa;MACRO OODA цикл&#xa;Делегирует субагентам" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="70" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== RESEARCH GROUP ==================== -->
+        <mxCell id="research_group" value="🔍 ИССЛЕДОВАНИЕ" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="320" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="finder" value="🔍 Finder&#xa;Быстрый поиск файлов&#xa;Glob, Grep, Read" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="10" y="40" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="analyst" value="📊 Analyst&#xa;Глубокий анализ кода&#xa;Зависимости, риски" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="40" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="researcher" value="🌐 Researcher&#xa;Внешние знания&#xa;Документация, API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="85" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== PLANNING GROUP ==================== -->
+        <mxCell id="planning_group" value="📐 ПЛАНИРОВАНИЕ" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="200" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="architect" value="🏛️ Architect&#xa;Проектирование&#xa;Структура, интерфейсы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="10" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="planner" value="📋 Planner&#xa;Декомпозиция задач&#xa;Атомарные задачи" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="140" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== IMPLEMENTATION GROUP ==================== -->
+        <mxCell id="impl_group" value="⚙️ РЕАЛИЗАЦИЯ" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="200" width="350" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="coder" value="💻 Coder&#xa;Новый код&#xa;Файлы, функции" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="10" y="40" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="editor" value="✏️ Editor&#xa;Изменение кода&#xa;Интеграция" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="120" y="40" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fixer" value="🔧 Fixer&#xa;Исправление багов&#xa;Минимальные правки" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="10" y="120" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="refactorer" value="🔄 Refactorer&#xa;Рефакторинг&#xa;Структура кода" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="120" y="120" width="100" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== QUALITY GROUP ==================== -->
+        <mxCell id="quality_group" value="✅ КАЧЕСТВО" style="swimlane;startSize=30;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="430" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="reviewer" value="👁️ Reviewer&#xa;Код-ревью&#xa;Качество, практики" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="10" y="40" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tester" value="🧪 Tester&#xa;Тестирование&#xa;Покрытие, баги" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="130" y="40" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="debugger" value="🐛 Debugger&#xa;Отладка&#xa;Первопричина" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="250" y="40" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="security" value="🔒 Security&#xa;Аудит безопасности&#xa;OWASP, уязвимости" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="130" y="120" width="110" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== DOCUMENTATION GROUP ==================== -->
+        <mxCell id="docs_group" value="📝 ДОКУМЕНТАЦИЯ" style="swimlane;startSize=30;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="430" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="documenter" value="📄 Documenter&#xa;Техническая документация&#xa;README, API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="10" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="commenter" value="💬 Commenter&#xa;Комментарии&#xa;JSDoc, inline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="140" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== INFRASTRUCTURE GROUP ==================== -->
+        <mxCell id="infra_group" value="🏗️ ИНФРАСТРУКТУРА" style="swimlane;startSize=30;fillColor=#e6d0de;strokeColor=#996185;fontSize=13;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="430" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="devops" value="🚀 DevOps&#xa;CI/CD, Docker&#xa;Деплой" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="10" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="optimizer" value="⚡ Optimizer&#xa;Производительность&#xa;Оптимизация" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="140" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== FLOW ARROWS ==================== -->
+
+        <!-- Orchestrator → Research -->
+        <mxCell id="e_orch_res" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="orchestrator" target="research_group" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="110" />
+              <mxPoint x="450" y="300" />
+              <mxPoint x="370" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Orchestrator → Planning -->
+        <mxCell id="e_orch_plan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" source="orchestrator" target="planning_group" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="150" />
+              <mxPoint x="640" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Orchestrator → Implementation -->
+        <mxCell id="e_orch_impl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#d6b656;" edge="1" source="orchestrator" target="impl_group" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="110" />
+              <mxPoint x="830" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Research → Planning -->
+        <mxCell id="e_res_plan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#999999;dashed=1;" edge="1" source="research_group" target="planning_group" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Planning → Implementation -->
+        <mxCell id="e_plan_impl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#999999;dashed=1;" edge="1" source="planning_group" target="impl_group" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Implementation → Quality -->
+        <mxCell id="e_impl_quality" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#999999;dashed=1;" edge="1" source="impl_group" target="quality_group" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="400" />
+              <mxPoint x="250" y="400" />
+              <mxPoint x="250" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Implementation → Documentation -->
+        <mxCell id="e_impl_docs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#999999;dashed=1;" edge="1" source="impl_group" target="docs_group" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="400" />
+              <mxPoint x="620" y="400" />
+              <mxPoint x="620" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Implementation → Infrastructure -->
+        <mxCell id="e_impl_infra" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#999999;dashed=1;" edge="1" source="impl_group" target="infra_group" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="400" />
+              <mxPoint x="930" y="400" />
+              <mxPoint x="930" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== MODEL LABEL ==================== -->
+        <mxCell id="model_label" value="📦 Все агенты: opencode/big-pickle" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="500" y="650" width="280" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== MICRO OODA LABEL ==================== -->
+        <mxCell id="ooda_label" value="🔄 Каждый субагент использует MICRO OODA цикл: OBSERVE → ORIENT → DECIDE → ACT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="350" y="680" width="580" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
