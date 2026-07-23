@@ -1,3 +1,9 @@
+"""FastAPI backend for user registration.
+
+Provides a POST /api/register endpoint that validates input, hashes passwords
+with bcrypt, checks email uniqueness, and persists user records in users.json.
+"""
+
 import json
 import re
 import threading
@@ -10,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, EmailStr, field_validator
 
-app = FastAPI()
+app = FastAPI(title="Registration API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,6 +32,8 @@ _password_re = re.compile(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$")
 
 
 class RegisterRequest(BaseModel):
+    """Schema for incoming registration payloads."""
+
     name: str
     email: EmailStr
     password: str
@@ -34,6 +42,7 @@ class RegisterRequest(BaseModel):
     @field_validator("name")
     @classmethod
     def name_must_not_be_empty(cls, v: str) -> str:
+        """Ensure name is non-empty after stripping whitespace."""
         if not v or not v.strip():
             raise ValueError("Name must not be empty")
         return v.strip()
@@ -41,6 +50,7 @@ class RegisterRequest(BaseModel):
     @field_validator("password")
     @classmethod
     def password_strength(cls, v: str) -> str:
+        """Enforce minimum password strength requirements."""
         if not _password_re.match(v):
             raise ValueError(
                 "Password must be at least 8 characters with "
@@ -51,6 +61,7 @@ class RegisterRequest(BaseModel):
     @field_validator("confirm_password")
     @classmethod
     def passwords_must_match(cls, v: str, info: Any) -> str:
+        """Verify confirm_password matches password."""
         password = info.data.get("password")
         if password is not None and v != password:
             raise ValueError("Passwords do not match")
@@ -58,11 +69,14 @@ class RegisterRequest(BaseModel):
 
 
 class RegisterResponse(BaseModel):
+    """Schema for successful registration responses."""
+
     status: str
     user: dict[str, str]
 
 
 def _load_users() -> list[dict[str, str]]:
+    """Load the users list from users.json, returning [] on missing/corrupt file."""
     if USERS_FILE.exists():
         try:
             return json.loads(USERS_FILE.read_text(encoding="utf-8"))
@@ -72,22 +86,30 @@ def _load_users() -> list[dict[str, str]]:
 
 
 def _save_users(users: list[dict[str, str]]) -> None:
+    """Persist the users list to users.json as pretty-printed JSON."""
     USERS_FILE.write_text(
         json.dumps(users, indent=2, ensure_ascii=False), encoding="utf-8"
     )
 
 
 def _hash_password(password: str) -> str:
+    """Return a bcrypt hash of the given password."""
     return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 
 @app.get("/")
 def serve_form() -> FileResponse:
-    return FileResponse(Path(__file__).parent / "index.html")
+    """Serve the registration HTML form."""
+    return FileResponse(Path(__file__).parent / "static" / "index.html")
 
 
 @app.post("/api/register", status_code=201)
 def register(body: RegisterRequest) -> RegisterResponse:
+    """Register a new user.
+
+    Checks email uniqueness, hashes the password, saves the record,
+    and returns the created user (without the password).
+    """
     with _lock:
         users = _load_users()
 

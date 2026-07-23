@@ -77,7 +77,55 @@ Test the actual implementation:
 | Edge Case | Test boundaries | Empty input, max length |
 | Error | Test failure paths | Invalid format, missing file |
 
-## Output Formats
+## Output Formats (MANDATORY)
+
+### test-cases.md — EXACT FORMAT REQUIRED
+
+```markdown
+---
+id: TEST-CASES-TASK-001
+task_id: TASK-001
+status: complete
+---
+
+# Test Cases
+
+## Summary
+- Total Tests: 44
+- Passed: 44
+- Failed: 0
+- Defects Found: 0
+
+## Checks
+| Check | Result | Notes |
+|-------|--------|-------|
+| Completeness | PASS | All sections present |
+| Clarity | PASS | Requirements clear |
+| Testability | PASS | All criteria verifiable |
+
+## Unit Tests
+| Test | Input | Expected | Result |
+|------|-------|----------|--------|
+| test_hash_returns_bcrypt_string | "password" | Hash starts with $2 | PASS |
+| test_successful_registration_returns_201 | Valid payload | 201, id, name, email | PASS |
+| test_duplicate_email_returns_409 | Same email twice | 409 Conflict | PASS |
+
+## Integration Tests
+| Test | Description | Result |
+|------|-------------|--------|
+| test_security_headers | GET / returns CSP headers | PASS |
+| test_cors_configuration | OPTIONS returns correct CORS | PASS |
+
+## Edge Cases
+| Test | Description | Result |
+|------|-------------|--------|
+| test_password_exactly_7_chars | Boundary: 7 chars rejected | PASS |
+| test_password_exactly_8_chars | Boundary: 8 chars accepted | PASS |
+| test_empty_json_body | Missing all fields | PASS |
+
+## Defects
+- None (or list defects with severity)
+```
 
 ### doc-test-result.md
 
@@ -104,33 +152,6 @@ status: pass | fail
 
 ## Issues (if any)
 - Issue 1: Description
-```
-
-### test-cases.md
-
-```markdown
----
-id: TEST-CASES-TASK-001
-task_id: TASK-001
-status: complete
----
-
-# Test Cases
-
-## Unit Tests
-| Test | Input | Expected | Result |
-|------|-------|----------|--------|
-| test_function_a | valid_input | output | PASS |
-
-## Integration Tests
-| Test | Description | Result |
-|------|-------------|--------|
-| test_workflow | Full workflow | PASS |
-
-## Edge Cases
-| Test | Description | Result |
-|------|-------------|--------|
-| test_empty_input | Empty input | PASS |
 ```
 
 ### defects/DEF-*.md
@@ -162,6 +183,20 @@ What actually happened.
 How to fix it.
 ```
 
+## Self-Validation Checklist (MANDATORY)
+
+Before returning your result, verify EACH item:
+
+- [ ] Frontmatter has id, task_id, status
+- [ ] ## Summary has pass/fail status AND test counts
+- [ ] ## Checks table has at least 3 rows
+- [ ] ## Unit Tests table has at least 5 rows
+- [ ] ## Defects section exists (list or "None")
+
+**If ANY item fails → fix it yourself. Do not return incomplete output.**
+
+Your output WILL BE VALIDATED against this checklist. Incomplete output will be rejected.
+
 ## Severity Levels
 
 | Level | Description | Action |
@@ -175,4 +210,4 @@ How to fix it.
 1. ALWAYS test against acceptance criteria from analysis.md
 2. ALWAYS report defects with clear reproduction steps
 3. NEVER approve code with critical defects
-4. Write tests that are independent and repeatable
+4. test-cases.md MUST follow the exact format above

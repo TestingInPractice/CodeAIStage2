@@ -40,6 +40,21 @@ Write the security audit report:
 
 ---
 
+## Working Directory
+
+You MUST write the security report to this EXACT path:
+
+| Output | Path |
+|--------|------|
+| security-report.md | `subtasks/SUB-004-security/security-report.md` |
+
+CRITICAL: When using the Write tool, use the EXACT path.
+The orchestrator expects the file at this specific location.
+
+Example: `subtasks/SUB-004-security/security-report.md`
+
+---
+
 ## Security Checks
 
 ### Authentication & Authorization
@@ -83,9 +98,9 @@ Write the security audit report:
 
 ---
 
-## Output Format
+## Output Format (MANDATORY)
 
-### security-report.md
+### security-report.md — EXACT FORMAT REQUIRED
 
 ```markdown
 ---
@@ -93,48 +108,71 @@ id: SEC-TASK-001
 task_id: TASK-001
 status: pass | fail
 critical: 0
-high: 0
-medium: 0
-low: 0
+high: 1
+medium: 3
+low: 2
 ---
 
 # Security Audit Report
 
 ## Summary
 - Status: PASS/FAIL
-- Total findings: X
-- Critical: X | High: X | Medium: X | Low: X
+- Total findings: 6
+- Critical: 0 | High: 1 | Medium: 3 | Low: 2
 
 ## Findings
 
-### [CRITICAL] Finding Title
-- **File**: path/to/file.py:42
-- **Issue**: Description of vulnerability
-- **Impact**: What an attacker could do
-- **Fix**: How to fix it
-- **Code**: `ulnerable code snippet`
+### [HIGH] CORS Allows All Origins With Credentials
+- **File**: app/main.py:35-41
+- **Issue**: CORSMiddleware configured with allow_origins=["*"] and allow_credentials=True
+- **Impact**: Cross-origin request forgery from any malicious website
+- **Fix**: Replace "*" with explicit allowlist, or set allow_credentials=False
+- **Code**:
+  ```python
+  app.add_middleware(
+      CORSMiddleware,
+      allow_origins=["*"],
+      allow_credentials=True,  # <- incompatible with wildcard
+  )
+  ```
 
-### [HIGH] Finding Title
-- **File**: path/to/file.py:15
-- **Issue**: Description
-- **Impact**: Description
-- **Fix**: Description
+### [MEDIUM] No Rate Limiting
+- **File**: app/main.py:159
+- **Issue**: No rate limiting on registration endpoint
+- **Impact**: Account enumeration, spam creation
+- **Fix**: Add slowapi or fastapi-limiter
 
-### [MEDIUM] Finding Title
-...
-
-### [LOW] Finding Title
-...
+### [LOW] Missing Security Headers
+- **File**: app/main.py:33
+- **Issue**: No Content-Security-Policy, X-Frame-Options headers
+- **Impact**: Clickjacking, MIME sniffing
+- **Fix**: Add security headers middleware
 
 ## Recommendations
-- Additional security improvements
-- Best practices to adopt
+1. Add rate limiting (5 registrations per minute)
+2. Implement email verification
+3. Replace JSON file with database for production
 
 ## Compliance Notes
-- Relevant standards (OWASP, etc.)
+- OWASP Top 10 (2021): A05 Security Misconfiguration
+- OWASP ASVS v4.0: Requirement 2.1.3 (password minimum 12 chars)
+- NIST SP 800-63B: Screen passwords against breached lists
 ```
 
----
+## Self-Validation Checklist (MANDATORY)
+
+Before returning your result, verify EACH item:
+
+- [ ] Frontmatter has id, task_id, status, critical, high, medium, low counts
+- [ ] ## Summary has pass/fail status AND finding counts
+- [ ] ## Findings has at least 1 finding with severity label [CRITICAL/HIGH/MEDIUM/LOW]
+- [ ] Each finding has: File, Issue, Impact, Fix fields
+- [ ] ## Recommendations has at least 1 actionable item
+- [ ] ## Compliance Notes references at least 1 standard (OWASP/NIST)
+
+**If ANY item fails → fix it yourself. Do not return incomplete output.**
+
+Your output WILL BE VALIDATED against this checklist. Incomplete output will be rejected.
 
 ## Severity Levels
 
@@ -152,7 +190,5 @@ low: 0
 1. ALWAYS check authentication and password handling first
 2. NEVER approve code with Critical or High findings
 3. ALWAYS provide specific file:line references
-4. ALWAYS include reproduction steps for findings
+4. security-report.md MUST follow the exact format above
 5. NEVER mark as PASS if any Critical or High finding exists
-6. ALWAYS test against OWASP Top 10 categories
-7. Report findings with clear, actionable fix suggestions

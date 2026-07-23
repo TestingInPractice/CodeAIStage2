@@ -47,9 +47,9 @@ A complete task MUST have:
 | Constraints | Yes | Limitations (time, tech, resources) |
 | References | No | Links to docs, examples |
 
-## Output Format
+## Output Format (MANDATORY)
 
-### analysis.md
+### analysis.md — EXACT FORMAT REQUIRED
 
 ```markdown
 ---
@@ -61,22 +61,48 @@ status: complete
 # Analysis: {task_title}
 
 ## Summary
-Brief summary of what the task is about.
+2-3 sentences describing what the task is about and why it matters.
 
 ## Requirements Identified
 - Requirement 1
 - Requirement 2
+- Requirement 3
 
 ## Acceptance Criteria
 - [ ] Criterion 1
 - [ ] Criterion 2
+- [ ] Criterion 3
 
-## Technical Notes
-- Technology considerations
-- Architecture decisions
+## Architecture
+[ASCII diagram showing components and data flow]
+
+Example:
+```
+[Browser] -- POST /api/register (JSON) --> [FastAPI app]
+                                              |
+                                         validate input
+                                         check email uniqueness
+                                         hash password (bcrypt)
+                                         write to users.json
+                                              |
+                                       201 / 400 / 409
+```
+
+## Project Structure
+| File | Purpose |
+|------|---------|
+| app/main.py | FastAPI backend with routes |
+| app/index.html | Registration form |
+
+## Key Decisions
+- **bcrypt vs hashlib**: bcrypt chosen because automatic salting and well-tested implementation
+- **JSON vs DB**: JSON chosen per constraints (no database required)
 
 ## Risk Assessment
-- Potential risks and mitigations
+| Risk | Impact | Likelihood | Mitigation |
+|------|--------|------------|------------|
+| Race condition on JSON | Data corruption | Medium | Use threading.Lock |
+| Missing JSON file | 500 error | High | Initialize as [] on startup |
 ```
 
 ### questions.md
@@ -90,8 +116,6 @@ status: questions
 
 # Questions for User
 
-The task is missing some required information. Please answer:
-
 ## Question 1
 {question text}
 
@@ -103,9 +127,26 @@ The task is missing some required information. Please answer:
 - [ ] Acceptance Criteria section
 ```
 
+## Self-Validation Checklist (MANDATORY)
+
+Before returning your result, verify EACH item:
+
+- [ ] Frontmatter has id, task_id, status
+- [ ] ## Summary has 2-3 sentences (not just 1)
+- [ ] ## Requirements Identified has at least 5 items
+- [ ] ## Acceptance Criteria has at least 5 checkable items (- [ ])
+- [ ] ## Architecture has ASCII diagram or detailed description
+- [ ] ## Project Structure has table with at least 2 files
+- [ ] ## Key Decisions explains at least 2 choices with reasoning
+- [ ] ## Risk Assessment has table with Risk/Impact/Likelihood/Mitigation
+
+**If ANY item fails → fix it yourself. Do not return incomplete output.**
+
+Your output WILL BE VALIDATED against this checklist. Incomplete output will be rejected.
+
 ## Rules
 
 1. NEVER approve a task with missing required sections
 2. ALWAYS check for frontmatter format
 3. Questions should be specific and actionable
-4. Analysis should be thorough but concise
+4. Analysis MUST follow the exact output format above
