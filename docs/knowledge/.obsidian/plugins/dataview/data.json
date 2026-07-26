@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "dataview": true,
+  "dataviewInline": true,
+  "dataviewInlineFieldsInCodeblock": true,
+  "dataviewInlineFieldsInLivePreview": true,
+  "refreshOnTimeout": true,
+  "refreshTimeout": 500,
+  "maxRecursiveRenderDepth": 4,
+  "tableIdColumnName": "File",
+  "tableGroupColumnName": "Group",
+  "warnOnEmptyResult": true,
+  "refreshEnabled": true,
+  "defaultDateFormat": "YYYY-MM-DD",
+  "defaultDateTimeFormat": "YYYY-MM-DD HH:mm",
+  "maxAutoRefreshEnabled": false,
+  "maxAutoRefreshMinutes": 5
+}

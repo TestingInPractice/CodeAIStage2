@@ -39,7 +39,7 @@ Execute this loop for EVERY step in the workflow.
 
 ---
 
-## 2. 12-Step Workflow
+## 2. 13-Step Workflow
 
 You MUST execute steps in this exact order:
 
@@ -47,7 +47,7 @@ You MUST execute steps in this exact order:
 1.  VALIDATE_INPUT      → Validate task.md format
 2.  ANALYZE             → Call @analyst to check completeness
 3.  SPLIT               → Create subtask directories
-4.  MCP_SEARCH          → Search for similar tasks (mock)
+4.  MCP_SEARCH          → Search knowledge graph for similar tasks and context
 5.  TEST_DOCUMENTATION  → Call @tester to validate docs (loop up to 3 times)
 6.  DEVELOP             → Call @developer to write code (one task at a time)
 7.  CODE_REVIEW         → Optional code review
@@ -57,6 +57,52 @@ You MUST execute steps in this exact order:
 11. DOCUMENT            → Document new features
 12. DEMO                → Generate execution report and PDF
 13. COMPLETE            → Task done
+```
+
+---
+
+## 2.1 Step 4: MCP_SEARCH — Knowledge Graph Integration
+
+At Step 4, use graph-mem MCP tools to search the knowledge base for relevant context:
+
+### Search Strategy
+
+1. **Search similar tasks**: `search_nodes(query=task_description, limit=5)`
+   - Find entities related to the current task
+   - Look for past decisions, patterns, and solutions
+
+2. **Find connected components**: `find_connections(entity_name="relevant_entity", max_hops=2)`
+   - Discover dependencies and related systems
+   - Understand impact scope
+
+3. **Get full context**: `get_entity(entity_name="key_entity")`
+   - Load complete observations for critical entities
+   - Review past decisions and their rationale
+
+### What to Search For
+- Task keywords (e.g., "authentication", "registration", "API")
+- Related components (e.g., "FastAPI", "bcrypt", "pytest")
+- Past patterns (e.g., "how we solved similar issue before")
+- Security context (e.g., "OWASP", "security rules")
+
+### Output
+Save findings to `subtasks/SUB-000-context/mcp_search.md`:
+```markdown
+## MCP Search Results
+- Similar tasks found: [count]
+- Related entities: [list]
+- Key patterns: [list]
+- Security context: [relevant rules]
+```
+
+### Integration with @developer
+Pass MCP search results to @developer at Step 6:
+```
+KNOWLEDGE CONTEXT FROM GRAPH:
+- Similar past tasks: [list]
+- Related components: [list]
+- Patterns to follow: [list]
+- Security considerations: [list]
 ```
 
 ---
@@ -231,7 +277,12 @@ Auto-fix? [yes/no/show details]
   },
 
   "planning": {
-    "mcp_search": { "similar_tasks": [...], "patterns": [...] }
+    "mcp_search": {
+      "similar_tasks": [...],
+      "patterns": [...],
+      "related_entities": [...],
+      "security_context": [...]
+    }
   },
 
   "implementation": {
@@ -437,7 +488,7 @@ Each agent receives ONLY its specific input. NEVER pass full task history or oth
 | Agent | Receives |
 |-------|----------|
 | @analyst | task.md only |
-| @developer | analysis.md, mcp_search.md, documentation.md |
+| @developer | analysis.md, mcp_search.md, documentation.md, knowledge_graph.md |
 | @tester | analysis.md, documentation.md, code/, tests/ |
 | @security | analysis.md, documentation.md, code/, tests/, dev-summary.md |
 
@@ -446,14 +497,16 @@ Each agent receives ONLY its specific input. NEVER pass full task history or oth
 ## Rules Summary
 
 1. ALWAYS call @analyst at Step 2 — no exceptions
-2. ALWAYS call @tester after code changes — no exceptions
-3. ALWAYS call @security for security-related tasks — no exceptions
-4. NEVER skip mandatory agents
-5. NEVER complete task if any quality agent returned FAIL
-6. ALWAYS pass full context between agents
-7. ALWAYS checkpoint after each phase
-8. Higher priority agents override lower priority
-9. Learn from repeated issues within session
-10. Maximum 5 fix iterations, then escalate
+2. ALWAYS search knowledge graph at Step 4 — use graph-mem MCP tools
+3. ALWAYS call @tester after code changes — no exceptions
+4. ALWAYS call @security for security-related tasks — no exceptions
+5. NEVER skip mandatory agents
+6. NEVER complete task if any quality agent returned FAIL
+7. ALWAYS pass full context between agents (including graph search results)
+8. ALWAYS checkpoint after each phase
+9. Higher priority agents override lower priority
+10. Learn from repeated issues within session
+11. Maximum 5 fix iterations, then escalate
+12. Store new knowledge in graph-mem after task completion
 
 You coordinate. Agents execute. Follow the rules.

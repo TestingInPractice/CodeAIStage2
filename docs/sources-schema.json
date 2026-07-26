@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/TestingInPractice/CodeAIStage2/docs/sources-schema.json",
+  "title": "Sources Database Schema",
+  "description": "JSON Schema для валидации docs/sources.json — базы источников проекта CodeAIStage2",
+  "type": "object",
+  "required": ["_meta", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "_meta": {
+      "type": "object",
+      "description": "Метаданные базы источников",
+      "required": ["description", "schema", "created", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Описание назначения базы"
+        },
+        "schema": {
+          "type": "string",
+          "description": "Имя файла схемы для валидации"
+        },
+        "created": {
+          "type": "string",
+          "format": "date",
+          "description": "Дата создания базы (YYYY-MM-DD)"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Версия базы (semver)"
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "Массив записей источников",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/SourceRecord"
+      }
+    }
+  },
+  "definitions": {
+    "SourceRecord": {
+      "type": "object",
+      "description": "Запись об источнике — библиотеке, репозитории, документации или инструменте",
+      "required": ["id", "url", "name", "type", "language", "description", "used_for", "used_in", "added", "category", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
+          "description": "Уникальный идентификатор (kebab-case)",
+          "examples": ["hermes-multiagent", "fastapi-docs", "owasp-top10"]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL источника",
+          "examples": ["https://github.com/TestingInPractice/hermes-multiagent"]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Читаемое название источника",
+          "examples": ["Hermes Multi-Agent System", "FastAPI Documentation"]
+        },
+        "type": {
+          "type": "string",
+          "enum": ["repo", "lib", "docs", "standard", "tool", "skill"],
+          "description": "Тип источника:\n- repo: Git-репозиторий\n- lib: Библиотека/пакет (npm, pip)\n- docs: Документация/статья\n- standard: Индустриальный стандарт (OWASP, NIST)\n- tool: Инструмент (IDE, компилятор, линтер)\n- skill: Скилл OpenCode/Claude Code"
+        },
+        "language": {
+          "type": "string",
+          "enum": ["python", "javascript", "typescript", "markdown", "any", "mixed", "en", "ru"],
+          "description": "Основной язык/формат источника"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 500,
+          "description": "Подробное описание источника (2-3 предложения): что это, для чего, ключевые особенности"
+        },
+        "used_for": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 500,
+          "description": "Как именно используется в проекте (2-3 предложения): какие модули, для каких задач, какой паттерн взят"
+        },
+        "used_in": {
+          "type": "array",
+          "description": "Список файлов проекта, где используется этот источник",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_\\-/.\\*]+$"
+          },
+          "examples": [
+            ["app/main.py", "developer.md"],
+            ["tests/test_register.py"]
+          ]
+        },
+        "added": {
+          "type": "string",
+          "format": "date",
+          "description": "Дата добавления записи (YYYY-MM-DD)"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["architecture", "backend", "frontend", "security", "testing", "devtools", "workflow"],
+          "description": "Категория в контексте проекта:\n- architecture: архитектурные решения, паттерны\n- backend: серверная логика, API, БД\n- frontend: вёрстка, формы, UX\n- security: аудит, стандарты безопасности\n- testing: тестирование, coverage\n- devtools: инструменты разработки\n- workflow: процессы, скиллы, автоматизация"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "reference", "deprecated"],
+          "description": "Статус использования:\n- active: активно используется в коде\n- reference: используется как справочный материал\n- deprecated: больше не используется"
+        }
+      }
+    }
+  }
+}
