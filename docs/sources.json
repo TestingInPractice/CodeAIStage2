@@ -749,6 +749,23 @@
       "added": "2026-07-27",
       "category": "skills",
       "status": "active"
+    },
+    {
+      "id": "graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "name": "Graphify",
+      "type": "tool",
+      "language": "python",
+      "description": "Инструмент для построения графов знаний из кодовой базы. Использует tree-sitter AST для локального парсинга кода (без LLM). Поддерживает документы, PDF, изображения, видео. Генерирует graph.html, GRAPH_REPORT.md, graph.json.",
+      "used_for": "Использован для построения графа знаний проекта: 726 узлов, 1123 связи, 57 комьюнити. Автоматически определяет зависимости между модулями, функциями и классами. God nodes: _valid_payload(), create_initial_state(), validate_task(). Подключён как skill для OpenCode.",
+      "used_in": [
+        "graphify-out/graph.json",
+        "graphify-out/GRAPH_REPORT.md",
+        "graphify-out/graph.html"
+      ],
+      "added": "2026-07-27",
+      "category": "tools",
+      "status": "active"
     }
   ]
 }

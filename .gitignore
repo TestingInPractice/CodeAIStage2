@@ -11,3 +11,4 @@ users.json
 .opencode/node_modules/
 .graphmem/
 .venv-graphmem/
+graphify-out/

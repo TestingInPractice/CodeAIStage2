@@ -135,6 +135,7 @@ total_sources: 47
 | [[github]] | GitHub — хостинг |
 | [[mypy]] | MyPy — типизация |
 | [[ruff]] | Ruff — линтер |
+| [[graphify]] | Graphify — граф знаний из кода |
 | [[claude-code-prompt-library]] | Claude Code Prompt Library |
 | [[claude-code-prompts]] | Claude Code промпты |
 | [[datatalks-opencode]] | DataTalks OpenCode |
@@ -182,9 +183,10 @@ total_sources: 47
 
 ## Статистика
 
-- **Всего статей:** 89
+- **Всего статей:** 93
 - **Всего концепций:** 11
-- **Всего источников:** 47
+- **Всего источников:** 48
+- **Граф знаний:** 726 узлов, 1123 связи, 57 комьюнити
 - **Последнее обновление:** 2026-07-27
 
 ---
