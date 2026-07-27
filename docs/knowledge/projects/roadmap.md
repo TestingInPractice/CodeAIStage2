@@ -228,6 +228,28 @@ python3 scripts/sync-obsidian-graph.py graph2md
 
 ---
 
+## Phase 9: Domain Skills (GameDev + Mobile)
+**2026-07-27**
+
+Добавление доменных скиллов для разработки игр и мобильных приложений.
+
+### Что сделано
+- Создали `godot-game-dev` — скилл для Godot 4.x (GDScript, сцены, физика, UI, шейдеры)
+- Создали `mobile-app-dev` — скилл для мобильной разработки (React Native, Flutter, iOS/Android)
+- Обновили архитектурную диаграмму — добавлен Knowledge Layer (Obsidian + Graph RAG + Skills)
+- Обновили roadmap — добавлена Phase 9
+
+### Скиллы
+- `~/.opencode/skills/godot-game-dev/SKILL.md` — Godot game development
+- `~/.opencode/skills/mobile-app-dev/SKILL.md` — Mobile app development
+
+### Ключевые файлы
+- `~/.opencode/skills/godot-game-dev/SKILL.md`
+- `~/.opencode/skills/mobile-app-dev/SKILL.md`
+- `architecture-v2.drawio` — обновлена диаграмма
+
+---
+
 ## Сводка
 
 | Phase | Дата | Описание | Ключевой результат |
@@ -240,8 +262,9 @@ python3 scripts/sync-obsidian-graph.py graph2md
 | 6 | 2026-07-25 | Skills | find-skills + skill-creator |
 | 7 | 2026-07-25 | Knowledge | 18 записей + Obsidian |
 | 8 | 2026-07-25 | Graph RAG | 58 entities + sync script |
-| 9 | — | Orchestrator интеграция | — (ожидается) |
-| 10 | — | Обработка папки файлов | — (ожидается) |
+| 9 | 2026-07-27 | Domain Skills | Godot + Mobile скиллы |
+| 10 | — | Orchestrator интеграция | — (ожидается) |
+| 11 | — | Обработка папки файлов | — (ожидается) |
 
 ---
 
@@ -249,3 +272,4 @@ python3 scripts/sync-obsidian-graph.py graph2md
 1. Интеграция graph-mem с orchestrator-v2 (шаг 4 MCP Search)
 2. Обработка папки файлов от пользователя в knowledge
 3. Автоматическая синхронизация через file watcher
+4. Git push — разрешить проблему с аутентификацией

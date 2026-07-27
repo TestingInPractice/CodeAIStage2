@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2026-07-23T12:00:00.000Z" agent="CodeAI" version="21.0.0">
-  <diagram id="codeai-v2" name="CodeAI v2 — Current Architecture">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+ЗЗЗЗ<mxfile host="app.diagrams.net" modified="2026-07-25T12:00:00.000Z" agent="CodeAI" version="21.0.0">
+  <diagram id="codeai-v2" name="CodeAI v2 — Actual Architecture">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1800" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -9,22 +9,25 @@
         <mxCell id="title" value="CODEAI v2 — Actual Architecture / Текущая архитектура" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
           <mxGeometry x="400" y="15" width="600" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="subtitle" value="Orchestrator-v2 + 4 Subagents + Unified Contracts + Task Type Pipelines" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="400" y="50" width="600" height="20" as="geometry" />
+        <mxCell id="subtitle" value="Orchestrator-v2 (13-Step) + 4 Subagents + Graph RAG + Obsidian + Skills + MCP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="300" y="50" width="800" height="20" as="geometry" />
         </mxCell>
 
         <!-- LEGEND -->
-        <mxCell id="legend_active" value="ACTIVE / Рабочий" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="15" width="130" height="30" as="geometry" />
+        <mxCell id="legend_active" value="ACTIVE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="15" width="70" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="legend_new" value="NEW / Новое" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="190" y="15" width="110" height="30" as="geometry" />
+        <mxCell id="legend_new" value="NEW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="15" width="60" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="legend_contract" value="CONTRACT / Контракт" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="310" y="15" width="140" height="30" as="geometry" />
+        <mxCell id="legend_contract" value="CONTRACT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="15" width="80" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="legend_file" value="FILE / Файл" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="460" y="15" width="110" height="30" as="geometry" />
+        <mxCell id="legend_file" value="FILE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="290" y="15" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_gap" value="GAP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="360" y="15" width="60" height="25" as="geometry" />
         </mxCell>
 
         <!-- ==================== USER INPUT ==================== -->
@@ -38,52 +41,52 @@
         </mxCell>
 
         <!-- ==================== ORCHESTRATOR-V2 ==================== -->
-        <mxCell id="orchestrator" value="🎯 ORCHESTRATOR-v2&#xa;12-Step OODA Workflow&#xa;MACRO OODA Loop" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="160" width="280" height="70" as="geometry" />
+        <mxCell id="orchestrator" value="🎯 ORCHESTRATOR-v2&#xa;13-Step Workflow + MACRO OODA&#xa;4 Checkpoints · Session Learning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="360" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="orch_desc" value="Delegates to subagents · Task type pipelines · Revision loops · Conflict resolution · Security triggers" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="560" y="230" width="280" height="25" as="geometry" />
+        <mxCell id="orch_desc" value="Delegates to subagents · Task type pipelines · Revision loops (max 5) · Conflict resolution (security &gt; tester &gt; analyst &gt; developer) · Security triggers" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="520" y="230" width="360" height="30" as="geometry" />
         </mxCell>
 
         <!-- ==================== 4 SUBAGENTS ==================== -->
         <!-- Analyst -->
-        <mxCell id="analyst" value="📊 Analyst&#xa;OODA: micro&#xa;Step 3-4: Orient" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="analyst" value="📊 Analyst&#xa;MICRO OODA&#xa;Check task completeness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="100" y="310" width="180" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="analyst_out" value="analysis.md" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="130" y="390" width="120" height="40" as="geometry" />
+        <mxCell id="analyst_out" value="📄 analysis.md&#xa;+ questions.md (if gaps)" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="110" y="390" width="160" height="40" as="geometry" />
         </mxCell>
 
         <!-- Developer -->
-        <mxCell id="developer" value="💻 Developer&#xa;OODA: micro&#xa;Step 5-6: Decide" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="developer" value="💻 Developer&#xa;MICRO OODA&#xa;Write code + tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="340" y="310" width="180" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="developer_out" value="dev-summary.md&#xa;src/*.py · tests/*.py" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="340" y="390" width="180" height="40" as="geometry" />
+        <mxCell id="developer_out" value="📄 dev-summary.md&#xa;📁 app/ · tests/" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="390" width="160" height="40" as="geometry" />
         </mxCell>
 
         <!-- Tester -->
-        <mxCell id="tester" value="🧪 Tester&#xa;OODA: micro&#xa;Step 7-8: Judge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="600" y="310" width="180" height="70" as="geometry" />
+        <mxCell id="tester" value="🧪 Tester&#xa;MICRO OODA&#xa;2 modes: doc + code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="310" width="180" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="tester_out" value="test-cases.md&#xa;defects/*.md" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="610" y="390" width="120" height="40" as="geometry" />
+        <mxCell id="tester_out" value="📄 test-cases.md&#xa;📄 doc-test-result.md&#xa;📁 defects/" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="575" y="390" width="170" height="45" as="geometry" />
         </mxCell>
 
         <!-- Security -->
-        <mxCell id="security" value="🔒 Security&#xa;OODA: micro&#xa;Step 8.5: Gate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="860" y="310" width="180" height="70" as="geometry" />
+        <mxCell id="security" value="🔒 Security&#xa;MICRO OODA&#xa;OWASP/NIST checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="310" width="180" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="security_out" value="security-report.md" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="870" y="390" width="150" height="40" as="geometry" />
+        <mxCell id="security_out" value="📄 security-report.md&#xa;📁 SUB-004-security/" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="390" width="170" height="40" as="geometry" />
         </mxCell>
 
         <!-- Arrows: Orchestrator → 4 agents -->
         <mxCell id="e_orch_analyst" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" source="orchestrator" target="analyst" parent="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="520" y="195" />
-              <mxPoint x="520" y="280" />
+              <mxPoint x="490" y="195" />
+              <mxPoint x="490" y="280" />
               <mxPoint x="190" y="280" />
             </Array>
           </mxGeometry>
@@ -91,8 +94,8 @@
         <mxCell id="e_orch_developer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" source="orchestrator" target="developer" parent="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="580" y="195" />
-              <mxPoint x="580" y="280" />
+              <mxPoint x="560" y="195" />
+              <mxPoint x="560" y="280" />
               <mxPoint x="430" y="280" />
             </Array>
           </mxGeometry>
@@ -100,18 +103,18 @@
         <mxCell id="e_orch_tester" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#b85450;" edge="1" source="orchestrator" target="tester" parent="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="720" y="195" />
-              <mxPoint x="720" y="280" />
-              <mxPoint x="690" y="280" />
+              <mxPoint x="700" y="195" />
+              <mxPoint x="700" y="280" />
+              <mxPoint x="670" y="280" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="e_orch_security" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#d79b00;" edge="1" source="orchestrator" target="security" parent="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="850" y="195" />
-              <mxPoint x="850" y="280" />
-              <mxPoint x="950" y="280" />
+              <mxPoint x="880" y="195" />
+              <mxPoint x="880" y="280" />
+              <mxPoint x="910" y="280" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -132,35 +135,26 @@
 
         <!-- ==================== UNIFIED CONTRACTS ==================== -->
         <mxCell id="contracts_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="460" width="1000" height="90" as="geometry" />
+          <mxGeometry x="50" y="460" width="1020" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="contracts_title" value="📋 UNIFIED AGENT CONTRACTS / Единые контракты агентов" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="70" y="465" width="350" height="25" as="geometry" />
-        </mxCell>
-
-        <!-- Analyst Contract -->
-        <mxCell id="contract_analyst" value="📊 analyst.md contract&#xa;Checklist: 8 items&#xa;Self-validation: MANDATORY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="70" y="495" width="180" height="50" as="geometry" />
+        <mxCell id="contracts_title" value="📋 UNIFIED AGENT CONTRACTS + SELF-VALIDATION CHECKLISTS / Единые контракты агентов" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="70" y="465" width="500" height="25" as="geometry" />
         </mxCell>
 
-        <!-- Developer Contract -->
-        <mxCell id="contract_developer" value="💻 developer.md contract&#xa;Checklist: 5 items&#xa;Self-validation: MANDATORY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="270" y="495" width="180" height="50" as="geometry" />
+        <mxCell id="contract_analyst" value="📊 analyst.md&#xa;Checklist: 8 items&#xa;Sections: 7 required" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="495" width="150" height="50" as="geometry" />
         </mxCell>
-
-        <!-- Tester Contract -->
-        <mxCell id="contract_tester" value="🧪 tester.md contract&#xa;Checklist: 5 items&#xa;Self-validation: MANDATORY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="470" y="495" width="180" height="50" as="geometry" />
+        <mxCell id="contract_developer" value="💻 developer.md&#xa;Checklist: 5 items&#xa;bcrypt validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="495" width="150" height="50" as="geometry" />
         </mxCell>
-
-        <!-- Security Contract -->
-        <mxCell id="contract_security" value="🔒 security.md contract&#xa;Checklist: 6 items&#xa;Self-validation: MANDATORY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="670" y="495" width="180" height="50" as="geometry" />
+        <mxCell id="contract_tester" value="🧪 tester.md&#xa;Checklist: 5 items&#xa;pass/fail status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="495" width="150" height="50" as="geometry" />
         </mxCell>
-
-        <!-- Validation Function -->
-        <mxCell id="validate_fn" value="validate_agent_output()&#xa;src/agent_contract.py" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="880" y="490" width="160" height="55" as="geometry" />
+        <mxCell id="contract_security" value="🔒 security.md&#xa;Checklist: 6 items&#xa;severity labels" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="580" y="495" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="validate_fn" value="validate_agent_output()&#xa;src/agent_contract.py&#xa;317 lines — frontmatter +&#xa;sections + agent-specific" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="490" width="180" height="55" as="geometry" />
         </mxCell>
 
         <!-- Arrows: contracts → agents -->
@@ -177,95 +171,55 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- ==================== TASK TYPE PIPELINES ==================== -->
-        <mxCell id="pipelines_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="580" width="1000" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="pipelines_title" value="🔗 TASK TYPE PIPELINES / Типы задач (Section 3.1)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="70" y="585" width="350" height="25" as="geometry" />
-        </mxCell>
-
-        <!-- Feature Pipeline -->
-        <mxCell id="pipeline_feature" value="🆕 FEATURE&#xa;Full 12-step&#xa;A → D → T → S" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="70" y="620" width="140" height="70" as="geometry" />
-        </mxCell>
-
-        <!-- Bug Pipeline -->
-        <mxCell id="pipeline_bug" value="🐛 BUG&#xa;Skip: 5 (decide)&#xa;A → D → T → S" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="230" y="620" width="140" height="70" as="geometry" />
-        </mxCell>
-
-        <!-- Refactor Pipeline -->
-        <mxCell id="pipeline_refactor" value="🔄 REFACTOR&#xa;Skip: 5,8,11&#xa;A → D → S" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="390" y="620" width="140" height="70" as="geometry" />
-        </mxCell>
-
-        <!-- Docs Pipeline -->
-        <mxCell id="pipeline_docs" value="📝 DOCS&#xa;Skip: 4-10&#xa;A only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="550" y="620" width="140" height="70" as="geometry" />
-        </mxCell>
-
-        <!-- Pipeline description -->
-        <mxCell id="pipeline_desc" value="Each pipeline defines which steps to execute and which agents are involved. Orchestrator selects pipeline based on task type from spec." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="710" y="620" width="320" height="60" as="geometry" />
-        </mxCell>
-
-        <!-- Arrows: pipelines → orchestrator -->
-        <mxCell id="e_p_orch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;dashed=1;" edge="1" source="pipelines_box" target="orchestrator" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="550" y="580" />
-              <mxPoint x="550" y="260" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <!-- ==================== 12-STEP WORKFLOW ==================== -->
+        <!-- ==================== 13-STEP WORKFLOW ==================== -->
         <mxCell id="workflow_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="740" width="1580" height="200" as="geometry" />
+          <mxGeometry x="50" y="580" width="1660" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="workflow_title" value="📋 12-STEP WORKFLOW / Двенадцатишаговый процесс" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="70" y="745" width="350" height="25" as="geometry" />
-        </mxCell>
-
-        <!-- Row 1: Steps 1-6 -->
-        <mxCell id="wf1" value="1&#xa;Prompt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="70" y="780" width="80" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="wf2" value="2&#xa;Spec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="170" y="780" width="80" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="wf3" value="3&#xa;Validate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="270" y="780" width="80" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="wf4" value="4&#xa;Analyst" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="370" y="780" width="80" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="wf5" value="5&#xa;Review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="470" y="780" width="80" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="wf6" value="6&#xa;Developer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="570" y="780" width="80" height="45" as="geometry" />
+        <mxCell id="workflow_title" value="📋 13-STEP WORKFLOW / Тринадцатишаговый процесс (orchestrator.md)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="585" width="450" height="25" as="geometry" />
         </mxCell>
 
-        <!-- Row 2: Steps 7-12 -->
-        <mxCell id="wf7" value="7&#xa;Run Tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="670" y="780" width="80" height="45" as="geometry" />
+        <!-- Row 1: Steps 1-7 -->
+        <mxCell id="wf1" value="1&#xa;Validate&#xa;Input" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="620" width="80" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="wf8" value="8&#xa;Test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="770" y="780" width="80" height="45" as="geometry" />
+        <mxCell id="wf2" value="2&#xa;Analyze" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="620" width="80" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="wf9" value="9&#xa;Security" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="870" y="780" width="80" height="45" as="geometry" />
+        <mxCell id="wf3" value="3&#xa;Split" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="620" width="80" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="wf10" value="10&#xa;Done" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="970" y="780" width="80" height="45" as="geometry" />
+        <mxCell id="wf4" value="4&#xa;MCP&#xa;Search" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="620" width="80" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="wf11" value="11&#xa;Questions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1070" y="780" width="80" height="45" as="geometry" />
+        <mxCell id="wf5" value="5&#xa;Test&#xa;Docs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="620" width="80" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="wf12" value="12&#xa;Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1170" y="780" width="80" height="45" as="geometry" />
+        <mxCell id="wf6" value="6&#xa;Develop" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wf7" value="7&#xa;Code&#xa;Review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Row 2: Steps 8-13 -->
+        <mxCell id="wf8" value="8&#xa;Security&#xa;Check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wf9" value="9&#xa;Test&#xa;Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wf10" value="10&#xa;Fix&#xa;Defects" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="990" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wf11" value="11&#xa;Document" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wf12" value="12&#xa;Demo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wf13" value="13&#xa;Complete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="620" width="80" height="50" as="geometry" />
         </mxCell>
 
         <!-- Flow arrows row 1 -->
@@ -275,86 +229,267 @@
         <mxCell id="we4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf4" target="wf5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
         <mxCell id="we5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf5" target="wf6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
         <mxCell id="we6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf6" target="wf7" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="we7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#6c8ebf;" edge="1" source="wf7" target="wf8" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="we8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#b85450;" edge="1" source="wf8" target="wf9" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="we9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#d79b00;" edge="1" source="wf9" target="wf10" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="we7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#d79b00;" edge="1" source="wf7" target="wf8" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="we8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#d79b00;" edge="1" source="wf8" target="wf9" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="we9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#b85450;" edge="1" source="wf9" target="wf10" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
         <mxCell id="we10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf10" target="wf11" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
         <mxCell id="we11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf11" target="wf12" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="we12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;" edge="1" source="wf12" target="wf13" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
 
         <!-- Step descriptions -->
-        <mxCell id="wf_desc_1-6" value="1: User input → 2: LLM parses to spec.json → 3: Validate spec → 4: Analyst runs → 5: Review analysis → 6: Developer implements" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="70" y="835" width="600" height="25" as="geometry" />
+        <mxCell id="wf_desc1" value="1: Validate task.md format → 2: @analyst analyzes → 3: Split into subtasks → 4: Search similar tasks (mock) → 5: @tester validates docs → 6: @developer implements" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="680" width="700" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="wf_desc_7-12" value="7: Run existing tests → 8: Tester validates → 9: Security audit → 10: Mark done → 11: If questions → send to user → 12: If error → retry" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="70" y="855" width="600" height="25" as="geometry" />
+        <mxCell id="wf_desc2" value="7: Code review → 8: @security mandatory gate → 9: @tester runs tests → 10: Fix defects (max 5 loops) → 11: Documentation → 12: Demo to user → 13: Mark complete" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="700" width="700" height="20" as="geometry" />
         </mxCell>
 
         <!-- Revision loop arrow -->
-        <mxCell id="revision_loop" value="🔁 Revision Loop&#xa;(max 3 rounds)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#b85450;dashed=1;fontSize=10;fontColor=#b85450;" edge="1" source="wf10" target="wf6" parent="1">
+        <mxCell id="revision_loop" value="🔁 Revision Loop&#xa;(max 5 fix iterations&#xa;Security FAIL = pipeline STOP)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#b85450;dashed=1;fontSize=10;fontColor=#b85450;" edge="1" source="wf10" target="wf6" parent="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1010" y="870" />
-              <mxPoint x="610" y="870" />
-              <mxPoint x="610" y="825" />
+              <mxPoint x="1030" y="750" />
+              <mxPoint x="610" y="750" />
+              <mxPoint x="610" y="670" />
             </Array>
           </mxGeometry>
         </mxCell>
 
+        <!-- GAP: state.py discrepancy -->
+        <mxCell id="gap_state" value="⚠️ GAP: state.py has 12 steps (no security_check)&#xa;orchestrator.md has 13 steps (includes security_check)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#b85450;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="620" width="310" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== 4 CHECKPOINTS ==================== -->
+        <mxCell id="checkpoints_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="860" width="1020" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="checkpoints_title" value="📍 4 MANDATORY CHECKPOINTS / Обязательные чекпоинты (orchestrator.md §6)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="70" y="865" width="450" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cp1" value="CP1: After ANALYZE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="890" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cp2" value="CP2: After SPLIT+MCP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="890" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cp3" value="CP3: After DEVELOP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="890" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cp4" value="CP4: After TEST_CODE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="890" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cp_desc" value="Each checkpoint: structured report → state update → optional user notification" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="740" y="893" width="320" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SESSION LEARNING ==================== -->
+        <mxCell id="learning_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="950" width="1020" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="learning_title" value="🧠 SESSION LEARNING SYSTEM / Обучение сессий (orchestrator.md §12)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="70" y="955" width="420" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_common" value="common_issues&#xa;(found 2+ times)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="980" width="150" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_prefs" value="user_preferences" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="980" width="140" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_patterns" value="project_patterns" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="400" y="980" width="140" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_inject" value="→ Inject known issues&#xa;into @developer prompts" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#9673a6;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="560" y="975" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== TASK TYPE PIPELINES ==================== -->
+        <mxCell id="pipelines_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1050" width="1020" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pipelines_title" value="🔗 TASK TYPE PIPELINES / Типы задач (orchestrator.md §3.1)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1055" width="380" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pipeline_feature" value="🆕 FEATURE&#xa;Full 13 steps&#xa;All agents" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1080" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeline_bug" value="🐛 BUG&#xa;Skip: 5, 11&#xa;A → D → T → S" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1080" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeline_refactor" value="🔄 REFACTOR&#xa;Skip: 5, 8, 11&#xa;A → D → T" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="1080" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeline_docs" value="📝 DOCS&#xa;Only: 1-2-3-11-12-13&#xa;A only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1080" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== METRICS &amp; REPORTS ==================== -->
+        <mxCell id="metrics_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="860" width="610" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="metrics_title" value="📊 METRICS &amp; REPORTS / Метрики и отчёты (NEW)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="865" width="380" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="metrics_module" value="src/metrics.py&#xa;AgentMetrics&#xa;TaskMetrics&#xa;estimate_cost()&#xa;TOKEN_PRICES" style="shape=note;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="895" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="reports_md" value="src/reports/markdown.py&#xa;generate_markdown_report()&#xa;save to reports/" style="shape=note;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="895" width="180" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="reports_pdf" value="src/reports/pdf.py&#xa;generate_pdf_report()&#xa;fpdf2 or text fallback" style="shape=note;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="955" width="180" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gap_metrics" value="⚠️ GAP:&#xa;record_agent_run() never called&#xa;total_tokens = 0" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#b85450;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="900" width="200" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONFLICT RESOLUTION ==================== -->
+        <mxCell id="conflict_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1010" width="610" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="conflict_title" value="⚔️ CONFLICT RESOLUTION / Эскалация конфликтов (orchestrator.md §11)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="1015" width="450" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="conflict_chain" value="🔒 Security &gt; 🧪 Tester &gt; 📊 Analyst &gt; 💻 Developer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="1040" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="conflict_escalate" value="Unresolvable → 👤 User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="1040" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONTEXT PASSING ==================== -->
+        <mxCell id="context_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1090" width="610" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="context_title" value="📦 CONTEXT JSON / Структурированный контекст (orchestrator.md §7)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="1093" width="450" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="context_sections" value="analysis · planning · implementation · quality · session_learnings" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="1118" width="570" height="20" as="geometry" />
+        </mxCell>
+
         <!-- ==================== STATE MANAGEMENT ==================== -->
         <mxCell id="state_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="960" width="1580" height="120" as="geometry" />
+          <mxGeometry x="50" y="1170" width="1660" height="120" as="geometry" />
         </mxCell>
         <mxCell id="state_title" value="💾 STATE &amp; FILES / Управление состоянием" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="70" y="965" width="300" height="25" as="geometry" />
+          <mxGeometry x="70" y="1175" width="300" height="25" as="geometry" />
         </mxCell>
 
-        <!-- State file -->
-        <mxCell id="state_file" value="📄 .workflow/state.json&#xa;Current step, status, history" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="70" y="1000" width="180" height="60" as="geometry" />
+        <mxCell id="state_file" value="📄 .workflow/state.json&#xa;Current step, status, history&#xa;agents: analyst/developer/tester&#xa;(⚠️ no security tracking)" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1205" width="180" height="70" as="geometry" />
         </mxCell>
 
-        <!-- Subtasks dir -->
-        <mxCell id="subtasks_dir" value="📁 subtasks/&#xa;SUB-001-analyst/&#xa;SUB-002-developer/&#xa;SUB-003-tester/&#xa;SUB-004-security/" style="shape=folder;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;tabWidth=70;tabHeight=20;" vertex="1" parent="1">
-          <mxGeometry x="290" y="990" width="200" height="80" as="geometry" />
+        <mxCell id="subtasks_dir" value="📁 subtasks/&#xa;SUB-001-analyst/&#xa;SUB-002-developer/&#xa;SUB-003-tester/&#xa;SUB-004-security/" style="shape=folder;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;tabWidth=70;tabHeight=20;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1195" width="180" height="80" as="geometry" />
         </mxCell>
 
-        <!-- Reports dir -->
-        <mxCell id="reports_dir" value="📁 reports/&#xa;analysis.md&#xa;dev-summary.md&#xa;test-cases.md&#xa;security-report.md" style="shape=folder;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;tabWidth=70;tabHeight=20;" vertex="1" parent="1">
-          <mxGeometry x="530" y="990" width="200" height="80" as="geometry" />
+        <mxCell id="reports_dir" value="📁 reports/&#xa;execution-report.md&#xa;execution-report.pdf" style="shape=folder;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;tabWidth=70;tabHeight=20;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1200" width="170" height="65" as="geometry" />
         </mxCell>
 
-        <!-- Code dirs -->
-        <mxCell id="code_dirs" value="📁 src/ · app/ · tests/&#xa;Application code + tests" style="shape=folder;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;tabWidth=70;tabHeight=20;" vertex="1" parent="1">
-          <mxGeometry x="770" y="1000" width="180" height="60" as="geometry" />
+        <mxCell id="defects_dir" value="📁 defects/&#xa;DEF-*.md&#xa;DEF-SEC-*.md" style="shape=folder;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;tabWidth=70;tabHeight=20;" vertex="1" parent="1">
+          <mxGeometry x="670" y="1200" width="150" height="65" as="geometry" />
         </mxCell>
 
-        <!-- Python modules -->
-        <mxCell id="py_modules" value="🐍 src/ modules:&#xa;state.py · validator.py · context.py · files.py&#xa;agent_contract.py" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="990" y="990" width="280" height="70" as="geometry" />
+        <mxCell id="code_dirs" value="📁 app/ · src/ · tests/&#xa;Application code + tests" style="shape=folder;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;tabWidth=70;tabHeight=20;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1200" width="180" height="65" as="geometry" />
         </mxCell>
 
-        <!-- Agent MDs -->
-        <mxCell id="agent_mds" value="📄 .opencode/agents/&#xa;orchestrator-v2.md&#xa;analyst.md · developer.md&#xa;tester.md · security.md" style="shape=note;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1310" y="990" width="220" height="70" as="geometry" />
+        <mxCell id="py_modules" value="🐍 src/ modules:&#xa;state.py · validator.py · context.py · files.py&#xa;agent_contract.py · metrics.py&#xa;reports/markdown.py · reports/pdf.py" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="1190" width="280" height="70" as="geometry" />
         </mxCell>
 
-        <!-- ==================== MODEL & MICRO OODA ==================== -->
-        <mxCell id="model_label" value="📦 Model: opencode/big-pickle (all agents)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="500" y="1100" width="350" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="ooda_label" value="🔄 Each subagent uses MICRO OODA: OBSERVE → ORIENT → DECIDE → ACT · Orchestrator uses MACRO OODA across all 12 steps" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="300" y="1125" width="750" height="25" as="geometry" />
+        <mxCell id="agent_mds" value="📄 .opencode/agents/&#xa;orchestrator-v2.md (459 lines)&#xa;analyst.md · developer.md&#xa;tester.md · security.md" style="shape=note;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="1190" width="220" height="70" as="geometry" />
         </mxCell>
 
-        <!-- ==================== KEY DIFFERENCES ==================== -->
-        <mxCell id="diff_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="1160" width="1580" height="100" as="geometry" />
+        <!-- ==================== KNOWLEDGE LAYER ==================== -->
+        <mxCell id="knowledge_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1310" width="1660" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="diff_title" value="📝 CHANGES vs architecture-map.drawio / Отличия от предыдущей схемы" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="70" y="1165" width="450" height="25" as="geometry" />
+        <mxCell id="knowledge_title" value="📚 KNOWLEDGE LAYER / Слой знаний (Obsidian + Graph RAG + Skills)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1315" width="450" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="diff_text" value="• OLD: 9-step workflow (Prompt → Spec → Observe → Orient → Decide → Act → Judge → Memory → Loop)&#xa;    NEW: 12-step workflow (Prompt → Spec → Validate → Analyst → Review → Developer → Run Tests → Test → Security → Done → Questions → Error)&#xa;• OLD: 4 OODA agents (observe, orient, decide, act) — no contracts&#xa;    NEW: 4 subagents (analyst, developer, tester, security) — with unified contracts + self-validation checklists&#xa;• NEW: Task type pipelines (feature/bug/refactor/docs) define which steps to skip&#xa;• NEW: src/agent_contract.py provides programmatic validation&#xa;• NEW: Security agent mandatory for auth/password/encryption changes" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="70" y="1190" width="1540" height="65" as="geometry" />
+
+        <!-- Obsidian Vault -->
+        <mxCell id="obsidian_vault" value="📝 Obsidian Vault&#xa;docs/knowledge/&#xa;58 articles · 11 concepts&#xa;5 templates · INDEX.md" style="shape=folder;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;tabWidth=80;tabHeight=20;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1345" width="180" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Graph RAG MCP -->
+        <mxCell id="graph_rag" value="🔗 Graph RAG MCP&#xa;.graphmem/graph.db&#xa;58 entities · 12 relationships&#xa;247 observations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1345" width="180" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Skills Ecosystem -->
+        <mxCell id="skills_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1345" width="400" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="skills_title" value="🛠️ Skills Ecosystem" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1350" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="skill_knowledge" value="knowledge-add&#xa;gsd-add-source" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1375" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="skill_gamedev" value="godot-game-dev&#xa;awesome-gamedev" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1375" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="skill_mobile" value="mobile-app-dev&#xa;react-native-skills" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1375" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="skill_meta" value="find-skills&#xa;skill-creator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="830" y="1375" width="50" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Sync Script -->
+        <mxCell id="sync_script" value="🔄 Sync Script&#xa;scripts/sync-obsidian-graph.py&#xa;md2graph · graph2md · status" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1345" width="180" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Import Script -->
+        <mxCell id="import_script" value="📥 Import Script&#xa;scripts/import-knowledge.py&#xa;.md → graph entities" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="1345" width="150" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- MCP Config -->
+        <mxCell id="mcp_config" value="⚙️ MCP Config&#xa;~/.config/opencode/opencode.jsonc&#xa;graph-mem server" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="1345" width="180" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows: Knowledge Layer connections -->
+        <mxCell id="e_obs_graph" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#82b366;dashed=1;" edge="1" source="obsidian_vault" target="graph_rag" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_graph_sync" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#d79b00;dashed=1;" edge="1" source="graph_rag" target="sync_script" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sync_import" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#d79b00;dashed=1;" edge="1" source="sync_script" target="import_script" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_import_mcp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#999999;dashed=1;" edge="1" source="import_script" target="mcp_config" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== MODEL &amp; OODA ==================== -->
+        <mxCell id="model_label" value="📦 Model: opencode/big-pickle (all agents) · LLM-based orchestration (not programmatic)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1450" width="550" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ooda_label" value="🔄 MACRO OODA: Orchestrator across 13 steps · MICRO OODA: Each subagent independently (OBSERVE → ORIENT → DECIDE → ACT)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1470" width="750" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== KNOWN GAPS ==================== -->
+        <mxCell id="gaps_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1510" width="1660" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="gaps_title" value="⚠️ KNOWN GAPS / Известные проблемы" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1375" width="300" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="gaps_text" value="• state.py: 12 steps (missing security_check) vs orchestrator.md: 13 steps — state.py needs update&#xa;• No reviewer agent defined — step 7 (CODE_REVIEW) has context.py support but no agent prompt&#xa;• No security subtask template in templates/ (only analyst, developer, tester exist)&#xa;• Token tracking not wired: record_agent_run() exists but never called by orchestrator&#xa;• MCP Search is mocked — no real integration&#xa;• No tests for agent_contract.py, metrics.py, reports/&#xa;• Git push blocked — SSH keys generated but can't add to GitHub via PAT&#xa;• Graph-Mem MCP requires venv — uvx lacks sentence-transformers dependency" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1530" width="1620" height="95" as="geometry" />
         </mxCell>
 
       </root>
