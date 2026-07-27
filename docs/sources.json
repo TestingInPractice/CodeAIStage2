@@ -766,6 +766,91 @@
       "added": "2026-07-27",
       "category": "tools",
       "status": "active"
+    },
+    {
+      "id": "awesome-design-md",
+      "title": "Awesome DESIGN.md — Curated Design System Tokens for AI Agents",
+      "source": "https://github.com/VoltAgent/awesome-design-md",
+      "date": "2026-07-28",
+      "category": "design",
+      "priority": "high",
+      "quality": "reference",
+      "designer": "VoltAgent + Community (100K+ stars)",
+      "reliability": "high",
+      "relevance": "design-tokens",
+      "knowledge-types": [
+        "design",
+        "ui",
+        "tokens",
+        "figma"
+      ],
+      "status": "added",
+      "tags": [
+        "design-md",
+        "design-system",
+        "ai",
+        "tokens",
+        "figma",
+        "vibe-coding"
+      ],
+      "files-used": [
+        "design-systems/DESIGN-opencode.md",
+        "design-systems/DESIGN-claude.md"
+      ],
+      "sections-used": [
+        "DESIGN.md files for opencode.ai and claude design systems"
+      ],
+      "key-topics": [
+        "Design tokens",
+        "Typography",
+        "Color palettes",
+        "Component tokens",
+        "Spacing systems"
+      ],
+      "url": "https://github.com/VoltAgent/awesome-design-md",
+      "downloaded-to": "/tmp/awesome-design-md"
+    },
+    {
+      "id": "godot-mcp",
+      "title": "Godot MCP — Full Godot 4.x Engine Control for AI",
+      "source": "https://github.com/tugcantopaloglu/godot-mcp",
+      "date": "2026-07-28",
+      "category": "mcp",
+      "priority": "high",
+      "quality": "reference",
+      "designer": "Tugcan Topaloglu + Solomon Elias (Coding-Solo)",
+      "reliability": "high",
+      "relevance": "godot-mcp",
+      "knowledge-types": [
+        "mcp",
+        "godot",
+        "game-dev",
+        "typescript"
+      ],
+      "status": "added",
+      "tags": [
+        "godot",
+        "mcp",
+        "game-dev",
+        "gdscript",
+        "runtime",
+        "typescript"
+      ],
+      "files-used": [
+        "godot-mcp/src/index.ts"
+      ],
+      "sections-used": [
+        "Full MCP server for Godot 4.x (157 tools)"
+      ],
+      "key-topics": [
+        "MCP server",
+        "Godot engine",
+        "GDScript",
+        "Scene management",
+        "Runtime control"
+      ],
+      "url": "https://github.com/tugcantopaloglu/godot-mcp",
+      "downloaded-to": "/tmp/godot-mcp"
     }
   ]
 }
