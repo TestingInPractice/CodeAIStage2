@@ -894,6 +894,96 @@
         "Godot vs Mobile"
       ],
       "url": "internal"
+    },
+    {
+      "id": "godot-prompter",
+      "title": "GodotPrompter — 51 Skills for Godot 4.x Game Development",
+      "source": "https://github.com/jame581/GodotPrompter",
+      "date": "2026-07-28",
+      "category": "skills",
+      "priority": "high",
+      "quality": "reference",
+      "designer": "jame581",
+      "reliability": "high",
+      "relevance": "godot-skills",
+      "knowledge-types": [
+        "godot",
+        "gdscript",
+        "game-dev",
+        "skills"
+      ],
+      "status": "added",
+      "tags": [
+        "godot",
+        "gdscript",
+        "skills",
+        "game-dev",
+        "ui",
+        "audio",
+        "animation"
+      ],
+      "files-used": [
+        ".opencode/skills/godot/godot-ui-children/SKILL.md",
+        ".opencode/skills/godot/godot-audio/SKILL.md",
+        ".opencode/skills/godot/godot-animation/SKILL.md",
+        ".opencode/skills/godot/godot-save-system/SKILL.md",
+        ".opencode/skills/godot/godot-tween-animation/SKILL.md",
+        ".opencode/skills/godot/godot-2d-graphics/SKILL.md"
+      ],
+      "sections-used": [
+        "6 skills extracted for alphabet app development"
+      ],
+      "key-topics": [
+        "UI for children",
+        "Audio system",
+        "Animation",
+        "Save/Load",
+        "Tween animation",
+        "2D graphics"
+      ],
+      "url": "https://github.com/jame581/GodotPrompter",
+      "downloaded-to": "/tmp/godot-prompter"
+    },
+    {
+      "id": "gd-agentic-skills",
+      "title": "GD Agentic Skills — Godot Skill Collection",
+      "source": "https://github.com/underscor1ng/gd-agentic-skills",
+      "date": "2026-07-28",
+      "category": "skills",
+      "priority": "high",
+      "quality": "reference",
+      "designer": "underscor1ng",
+      "reliability": "high",
+      "relevance": "godot-skills",
+      "knowledge-types": [
+        "godot",
+        "gdscript",
+        "game-dev",
+        "skills"
+      ],
+      "status": "added",
+      "tags": [
+        "godot",
+        "gdscript",
+        "skills",
+        "game-dev",
+        "mobile",
+        "touch"
+      ],
+      "files-used": [
+        ".opencode/skills/godot/godot-touch-input/SKILL.md"
+      ],
+      "sections-used": [
+        "1 skill extracted for touch input handling"
+      ],
+      "key-topics": [
+        "Touch input",
+        "Mobile controls",
+        "Safe areas",
+        "Responsive UI"
+      ],
+      "url": "https://github.com/underscor1ng/gd-agentic-skills",
+      "downloaded-to": "/tmp/gd-agentic-skills"
     }
   ]
 }
