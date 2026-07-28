@@ -851,6 +851,49 @@
       ],
       "url": "https://github.com/tugcantopaloglu/godot-mcp",
       "downloaded-to": "/tmp/godot-mcp"
+    },
+    {
+      "id": "skill-structure-reorganization",
+      "title": "Skills Reorganization — Workspace Scope with Domain Separation",
+      "source": "internal",
+      "date": "2026-07-28",
+      "category": "architecture",
+      "priority": "high",
+      "quality": "reference",
+      "designer": "Internal",
+      "reliability": "high",
+      "relevance": "skills-architecture",
+      "knowledge-types": [
+        "architecture",
+        "skills",
+        "organization"
+      ],
+      "status": "added",
+      "tags": [
+        "skills",
+        "workspace",
+        "godot",
+        "mobile",
+        "shared",
+        "separation"
+      ],
+      "files-used": [
+        ".opencode/skills/godot/godot-game-dev/SKILL.md",
+        ".opencode/skills/mobile/mobile-app-dev/SKILL.md",
+        ".opencode/skills/shared/knowledge-add/SKILL.md",
+        ".opencode/skills/shared/requirements-spec/SKILL.md",
+        ".opencode/skills/shared/obsidian-skills/"
+      ],
+      "sections-used": [
+        "Workspace scope skills reorganization"
+      ],
+      "key-topics": [
+        "Skill organization",
+        "Domain separation",
+        "Workspace scope",
+        "Godot vs Mobile"
+      ],
+      "url": "internal"
     }
   ]
 }
