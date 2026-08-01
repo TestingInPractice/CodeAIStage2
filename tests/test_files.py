@@ -6,6 +6,8 @@ from src.files import (
     create_subtask_dirs,
     read_subtask,
     write_subtask_file,
+    write_subtask_breakdown,
+    write_project_map,
     list_defects,
     write_defect,
     list_files_recursive,
@@ -47,7 +49,7 @@ def test_write_task(tmp_path):
 
 def test_create_subtask_dirs(tmp_path):
     created = create_subtask_dirs(tmp_path)
-    assert len(created) == 3
+    assert len(created) == len(SUBTASK_DIRS)
     for dirname in SUBTASK_DIRS.values():
         assert (tmp_path / "subtasks" / dirname).exists()
 
@@ -59,6 +61,23 @@ def test_write_and_read_subtask(tmp_path):
     files = read_subtask(tmp_path, "analyst")
     assert "analysis.md" in files
     assert files["analysis.md"] == "# Analysis"
+
+
+def test_write_subtask_breakdown(tmp_path):
+    path = write_subtask_breakdown(tmp_path, "## Subtask Breakdown\n| 1 | build | ... |")
+    assert path.exists()
+    assert path.name == "subtasks.md"
+    assert "## Subtask Breakdown" in path.read_text(encoding="utf-8")
+    assert (tmp_path / "subtasks" / SUBTASK_DIRS["analyst"] / "subtasks.md").exists()
+
+
+def test_write_project_map(tmp_path):
+    path = write_project_map(tmp_path, "# Project Map\n\n## Current\n## Target")
+    assert path.exists()
+    assert path.name == "project-map.md"
+    content = path.read_text(encoding="utf-8")
+    assert "## Current" in content
+    assert "## Target" in content
 
 
 def test_list_defects(tmp_path):
