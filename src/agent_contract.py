@@ -26,6 +26,7 @@ AGENT_CONTRACTS: dict[str, dict[str, Any]] = {
             "acceptance_criteria",
             "architecture",
             "project_structure",
+            "project_map",
             "key_decisions",
             "risk_assessment",
         ],
@@ -36,6 +37,7 @@ AGENT_CONTRACTS: dict[str, dict[str, Any]] = {
             "## Acceptance Criteria has at least 3 checkable items",
             "## Architecture has diagram or description",
             "## Project Structure lists files to create",
+            "## Project Map (current + target) recorded in docs/project-map.md",
             "## Key Decisions explains at least 1 choice",
             "## Risk Assessment has mitigations",
         ],
@@ -45,6 +47,7 @@ AGENT_CONTRACTS: dict[str, dict[str, Any]] = {
             "acceptance_criteria": "## Acceptance Criteria",
             "architecture": "## Architecture",
             "project_structure": "## Project Structure",
+            "project_map": "## Project Map",
             "key_decisions": "## Key Decisions",
             "risk_assessment": "## Risk Assessment",
         },
@@ -218,6 +221,14 @@ def _validate_analyst(body: str) -> list[str]:
         has_mitigation = "mitigation" in risk_section.lower() or "|" in risk_section
         if not has_mitigation:
             errors.append("Risk Assessment should have mitigations or table")
+
+    # Check Project Map references current + target structure
+    map_section = _extract_section(body, "## Project Map")
+    if map_section:
+        has_current = "current" in map_section.lower()
+        has_target = "target" in map_section.lower()
+        if not (has_current and has_target):
+            errors.append("Project Map should describe both current and target structure")
 
     return errors
 

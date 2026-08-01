@@ -36,6 +36,22 @@ def create_subtask_dirs(project_root: Path) -> list[str]:
     return created
 
 
+def write_subtask_breakdown(project_root: Path, content: str) -> Path:
+    subtask_dir = project_root / "subtasks" / SUBTASK_DIRS["analyst"]
+    subtask_dir.mkdir(parents=True, exist_ok=True)
+    file_path = subtask_dir / "subtasks.md"
+    file_path.write_text(content, encoding="utf-8")
+    return file_path
+
+
+def write_project_map(project_root: Path, content: str) -> Path:
+    docs_dir = project_root / "docs"
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    file_path = docs_dir / "project-map.md"
+    file_path.write_text(content, encoding="utf-8")
+    return file_path
+
+
 def read_subtask(project_root: Path, agent: str) -> dict[str, str | None]:
     dirname = SUBTASK_DIRS.get(agent)
     if dirname is None:
