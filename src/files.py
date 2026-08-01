@@ -52,6 +52,14 @@ def write_project_map(project_root: Path, content: str) -> Path:
     return file_path
 
 
+def write_security_fix_tasks(project_root: Path, content: str) -> Path:
+    subtask_dir = project_root / "subtasks" / SUBTASK_DIRS["security"]
+    subtask_dir.mkdir(parents=True, exist_ok=True)
+    file_path = subtask_dir / "fix-tasks.md"
+    file_path.write_text(content, encoding="utf-8")
+    return file_path
+
+
 def read_subtask(project_root: Path, agent: str) -> dict[str, str | None]:
     dirname = SUBTASK_DIRS.get(agent)
     if dirname is None:

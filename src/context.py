@@ -7,7 +7,7 @@ CONTEXT_ISOLATION = {
     "developer": ["analysis.md", "mcp_search.md", "documentation.md"],
     "tester": ["analysis.md", "documentation.md", "code/", "tests/"],
     "reviewer": ["code/", "tests/", "documentation.md"],
-    "security": ["analysis.md", "documentation.md", "code/", "tests/", "dev-summary.md"],
+    "security": ["src/", "app/", "tests/", "configs", "previous security-report.md", "fix-tasks.md"],
 }
 
 
@@ -79,16 +79,16 @@ def build_reviewer_context(project_root: Path) -> dict[str, Any]:
 
 def build_security_context(project_root: Path) -> dict[str, Any]:
     subtask_dir = project_root / "subtasks" / "SUB-004-security"
-    dev_dir = project_root / "subtasks" / "SUB-002-developer"
     return {
         "agent": "security",
         "input_files": {
-            "analysis.md": read_file_safe(subtask_dir / "analysis.md"),
-            "documentation.md": read_file_safe(subtask_dir / "documentation.md"),
-            "dev-summary.md": read_file_safe(dev_dir / "dev-summary.md"),
+            "previous-security-report.md": read_file_safe(subtask_dir / "security-report.md"),
+            "fix-tasks.md": read_file_safe(subtask_dir / "fix-tasks.md"),
         },
         "code": read_dir_safe(project_root / "src"),
+        "app": read_dir_safe(project_root / "app"),
         "tests": read_dir_safe(project_root / "tests"),
+        "configs": read_dir_safe(project_root / "config"),
         "available_files": list(CONTEXT_ISOLATION["security"]),
     }
 

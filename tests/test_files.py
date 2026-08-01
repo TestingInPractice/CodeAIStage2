@@ -8,6 +8,7 @@ from src.files import (
     write_subtask_file,
     write_subtask_breakdown,
     write_project_map,
+    write_security_fix_tasks,
     list_defects,
     write_defect,
     list_files_recursive,
@@ -78,6 +79,16 @@ def test_write_project_map(tmp_path):
     content = path.read_text(encoding="utf-8")
     assert "## Current" in content
     assert "## Target" in content
+
+
+def test_write_security_fix_tasks(tmp_path):
+    path = write_security_fix_tasks(tmp_path, "## Security Fix Tasks\n| 1 | CORS | HIGH | app/main.py:35 | open |")
+    assert path.exists()
+    assert path.name == "fix-tasks.md"
+    content = path.read_text(encoding="utf-8")
+    assert "## Security Fix Tasks" in content
+    assert "HIGH" in content
+    assert (tmp_path / "subtasks" / SUBTASK_DIRS["security"] / "fix-tasks.md").exists()
 
 
 def test_list_defects(tmp_path):
