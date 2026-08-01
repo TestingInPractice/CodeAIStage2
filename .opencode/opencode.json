@@ -1,5 +1,61 @@
 {
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "AGENTS.md",
+    "docs/specs/*.md"
+  ],
+  "permission": {
+    "skill": {
+      "*": "deny",
+      "gsd-*": "allow",
+      "brainstorming": "allow",
+      "requirements-spec": "allow",
+      "knowledge-add": "allow",
+      "test-driven-development": "allow",
+      "systematic-debugging": "allow",
+      "verification-before-completion": "allow",
+      "writing-plans": "allow",
+      "dispatching-parallel-agents": "allow",
+      "agents-best-practices": "allow",
+      "customize-opencode": "allow",
+      "defuddle": "allow",
+      "obsidian-markdown": "allow",
+      "obsidian-cli": "allow",
+      "json-canvas": "allow",
+      "graphify": "allow",
+      "graph-mem": "allow"
+    }
+  },
   "plugin": [
-    ".opencode/plugins/graphify.js"
-  ]
+    ".opencode/plugins/graphify.js",
+    "superpowers@git+https://github.com/obra/superpowers.git"
+  ],
+  "mcp": {
+    "graph-mem": {
+      "type": "local",
+      "command": ["/Users/halapinvv/Documents/Agents/CodeAIStage2/.venv-graphmem/bin/graph-mem", "server", "--project-dir", "/Users/halapinvv/Documents/Agents/CodeAIStage2"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp@latest", "--headless"],
+      "enabled": true
+    },
+    "godot-docs": {
+      "type": "remote",
+      "url": "https://godot-docs-mcp.j2d.workers.dev/mcp",
+      "enabled": true
+    },
+    "godot-docs-local": {
+      "type": "local",
+      "command": ["npx", "@fernforestgames/mcp-server-godot-docs"],
+      "environment": { "GODOT_PATH": "/opt/homebrew/bin/godot" },
+      "enabled": false
+    }
+  }
 }
